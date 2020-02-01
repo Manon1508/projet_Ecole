@@ -16,7 +16,7 @@ import com.intiformation.projetecole.entity.Aide;
 public class AideDao implements IGestion<Aide> {
 
 	@Override
-	public boolean Ajouter(Aide pAide) {
+	public boolean ajouter(Aide pAide) {
 
 		// 1. Définition d'une aide à ajouter
 		Aide aide = new Aide("pPage", "pContenu");
@@ -55,7 +55,7 @@ public class AideDao implements IGestion<Aide> {
 	}
 
 	@Override
-	public void Supprimer(int id) {
+	public boolean supprimer(int id) {
 		// 1. récup de la factory
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE");
 		
@@ -86,11 +86,12 @@ public class AideDao implements IGestion<Aide> {
 		// 6. libération des ressources
 		em.close();
 		emf.close();
+		return false;
 
 	}
 
 	@Override
-	public Aide GetById(int id) {
+	public Aide getById(int id) {
 		// 1. récup de la factory
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE");
 		
@@ -121,7 +122,7 @@ public class AideDao implements IGestion<Aide> {
 	}
 
 	@Override
-	public void Modifier(Aide t) {
+	public boolean modifier(Aide t) {
 		// 1. récup de la factory
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE");
 		
@@ -159,6 +160,7 @@ public class AideDao implements IGestion<Aide> {
 		// 6. libération des ressources
 		em.close();
 		emf.close();
+		return false;
 
 	}
 
@@ -166,7 +168,7 @@ public class AideDao implements IGestion<Aide> {
 	 * Méthode à définir avec JPQL
 	 */
 	@Override
-	public List<Aide> GetAll() {
+	public List<Aide> getAll() {
 		// 1. Récup de l'EntityManager
 		EntityManager em = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE")
 									  .createEntityManager();

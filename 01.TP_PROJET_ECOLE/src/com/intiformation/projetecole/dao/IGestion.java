@@ -5,6 +5,8 @@ package com.intiformation.projetecole.dao;
 
 import java.util.List;
 
+import com.intiformation.projetecole.entity.Aide;
+
 /**
  * Interface avec les 5 méthodes principales
  * 
@@ -18,32 +20,33 @@ public interface IGestion<T> {
 	 * 
 	 * @return
 	 */
-	public boolean Ajouter(T t);
+	public boolean ajouter(T t);
 
 	/**
 	 * Méthode générique Supprimer
 	 * @return
 	 */
-	public void Supprimer(int id);
+	public boolean supprimer(int id);
 
 
 	/**
 	 * Méthode générique GetById
 	 * @return
 	 */
-	public T GetById(int id);
+	public T getById(int id);
 
 	/**
 	 * Méthode générique Modifier
 	 * @return
 	 */
-	public void Modifier (T t);
+	public boolean modifier (T t);
 
 	/**
 	 * Cette méthode est faite avec JPQL
 	 * Méthode générique GetAll
 	 * @return
 	 */
-	public List<T> GetAll();
+	public List<T> getAll();
+
 
 }// end Interface
