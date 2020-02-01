@@ -24,7 +24,7 @@ public interface IGestion<T> {
 	 * Méthode générique Supprimer
 	 * @return
 	 */
-	public boolean Supprimer(int id);
+	public void Supprimer(int id);
 
 
 	/**
@@ -37,7 +37,7 @@ public interface IGestion<T> {
 	 * Méthode générique Modifier
 	 * @return
 	 */
-	public boolean Modifier (T t);
+	public void Modifier (T t);
 
 	/**
 	 * Cette méthode est faite avec JPQL

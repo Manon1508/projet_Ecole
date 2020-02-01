@@ -87,13 +87,5 @@ public class Aide {
 	public String toString() {
 		return "Aide [idAide=" + idAide + ", page=" + page + ", contenu=" + contenu + "]";
 	}
-	
-
-	
-
-	
-	
-	
-	
 
 }// end class
