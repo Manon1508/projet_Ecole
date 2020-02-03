@@ -1,11 +1,10 @@
 package com.intiformation.projetecole.entity;
 
-<<<<<<< HEAD
-=======
+
 import java.io.Serializable;
 
 import javax.annotation.Generated;
->>>>>>> branch 'master' of https://github.com/Manon1508/projet_Ecole.git
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
