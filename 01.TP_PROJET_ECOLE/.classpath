@@ -3,11 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="WebContent/lib/mysql-connector-java-5.1.40-bin.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lib/mysql-connector-java-5.1.40-bin.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lib/javax.faces-2.2.8.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lib/primefaces-7.0-javadoc.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lib/primefaces-7.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.faces-2.2.8.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/primefaces-7.0-javadoc.jar"/>
@@ -22,9 +17,9 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2 (1)">
 		<attributes>
-			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
 		</attributes>
 	</classpathentry>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>Edition de l'aide</h:head> 
+<body> 
+<ui:composition template="/templates/layout.xhtml">
+<!-- Définition d'un nouveau contenu pour le contenu principal -->
+<ui:define name="content">
+
+	<h2> Edition de l'aide</h2>
+	<h:form>    
+	<h:outputLabel value="Page : " />
+	<h:inputText value="#{aideBean.aide.page}" />
+<br/>
+<br/>
+	<h:outputLabel value="Contenu : " />
+    <p:textEditor widgetVar="editor1" value="#{aideBean.aide.contenu}" height="300" style="margin-bottom:10px"/>
+     
+    <h:commandLink action="listAide" actionListener="#{aideBean.ajouterNouvelleAide}" 
+								 value="Ajouter" />
+	
+     
+    <p:commandButton value="Ajouter la nouvelle aide" action="#{AideBean.ajouterNouvelleAide}" update="display" oncomplete="PF('dlg').show()" icon="pi pi-save" />
+    <p:commandButton value="vider le champ contenu" type="button" onclick="PF('editor1').clear();" icon="pi pi-times" />
+    <p:dialog header="Info : " widgetVar="dlg" showEffect="fade" hideEffect="fade">
+    <p:outputPanel id="display">
+        <h:outputText value="#{AideBean.afficherParId}" escape="false" />
+    </p:outputPanel>
+    </p:dialog>  
+    
+    <h:link value="Retour vers la page aide"
+	outcome="aide.xhtml"/>
+    
+    </h:form>
+	
+</ui:define>
+</ui:composition>	
+</body> 
+</html>

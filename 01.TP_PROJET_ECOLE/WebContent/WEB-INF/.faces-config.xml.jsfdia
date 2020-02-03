@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#aide.xhtml" PATH="/aide.xhtml"
+  SHAPE="48,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#aide.xhtml:0" NAME="item" PATH="/aide.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="listAide::#aide.xhtml" NAME="output"
+    PATH="/aide.xhtml" TARGET="rules:#aide.xhtml" TITLE="listAide" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editAide::#edit_aide.xhtml" NAME="output1"
+    PATH="/edit_aide.xhtml" TARGET="rules:#edit_aide.xhtml"
+    TITLE="editAide" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="aideAdd::#ajouter_aide.xhtml" NAME="output2"
+    PATH="/ajouter_aide.xhtml" TARGET="rules:#ajouter_aide.xhtml"
+    TITLE="aideAdd" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ajouter_aide.xhtml"
+  PATH="/ajouter_aide.xhtml" SHAPE="288,209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ajouter_aide.xhtml:0" NAME="item"
+   PATH="/ajouter_aide.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="listAide::#aide.xhtml" NAME="output"
+    PATH="/aide.xhtml" TARGET="rules:#aide.xhtml" TITLE="listAide" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#edit_aide.xhtml" PATH="/edit_aide.xhtml"
+  SHAPE="288,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

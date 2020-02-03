@@ -18,8 +18,6 @@ public class AideDao implements IGestion<Aide> {
 	@Override
 	public boolean ajouter(Aide pAide) {
 
-		// 1. Définition d'une aide à ajouter
-		Aide aide = new Aide("pPage", "pContenu");
 
 		// 2. Récupérer l'entité manager (interaction avec la bdd)
 
@@ -42,7 +40,7 @@ public class AideDao implements IGestion<Aide> {
 		 * retourne une erreur, l'excception PersistenceException
 		 */
 		// try catch (rollback)
-		entityManager.persist(aide);
+		entityManager.persist(pAide);
 
 		// 2.6 Validation de la transaction avec la méthode commit
 		transaction.commit();

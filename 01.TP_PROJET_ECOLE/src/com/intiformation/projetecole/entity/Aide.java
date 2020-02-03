@@ -52,6 +52,7 @@ public class Aide {
 		this.page = page;
 		this.contenu = contenu;
 	}
+
 	/**
 	 * ctor vide
 	 */
