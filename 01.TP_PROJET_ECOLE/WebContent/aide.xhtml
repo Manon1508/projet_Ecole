@@ -47,12 +47,18 @@
 						<h:outputText value="#{a.contenu}" />
 					</p:column>
 					
-       				 <p:column style="width:32px">
+       				<p:column style="width:32px">
             			<p:rowEditor value ="#{aideBean.modifierAide()}"/>
-       				 </p:column>
+       				</p:column>
+       				 
+       				<p:column style="width:32px">
+            			<p:button outcome="editAide" icon="pi pi-pencil" style="margin-right:20px;" title="Icon Only">
+						</p:button>
+       				</p:column>
+       				 
 					
 <!-- 					<p:column headerText="Supprimer"> -->
-<!-- 						<h:outputText value="#{aideBean.supprimerAide}" /> -->
+<!-- 						<h:outputText value="#{aideBean.supprimerAide()}" /> -->
 <!-- 					</p:column>					 -->
 
 				</p:dataTable>

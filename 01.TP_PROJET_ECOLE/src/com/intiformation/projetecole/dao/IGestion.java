@@ -39,7 +39,7 @@ public interface IGestion<T> {
 	 * Méthode générique Modifier
 	 * @return
 	 */
-	public boolean modifier (T t);
+	public void modifier (T t);
 
 	/**
 	 * Cette méthode est faite avec JPQL

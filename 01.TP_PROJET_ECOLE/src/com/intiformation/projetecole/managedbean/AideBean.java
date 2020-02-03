@@ -193,29 +193,9 @@ public class AideBean implements Serializable{
 	} // end ajouterNouveauLivre()
 
 	
-    public void onRowEdit(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Aide modifiée", ((UIComponentBase) event.getObject()).getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-     
-    public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", ((UIComponentBase) event.getObject()).getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-     
-    public void onCellEdit(CellEditEvent event) {
-        Object oldValue = event.getOldValue();
-        Object newValue = event.getNewValue();
-         
-        if(newValue != null && !newValue.equals(oldValue)) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "cellule modifiée", "Old: " + oldValue + ", New:" + newValue);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }
-    }
 
-	
-	
-	
+     
+
 	
 	
 } // end aideBean
