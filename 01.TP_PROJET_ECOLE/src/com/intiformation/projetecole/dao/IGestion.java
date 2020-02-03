@@ -39,15 +39,9 @@ public interface IGestion<T> {
 	 * Méthode générique Modifier
 	 * @return
 	 */
-<<<<<<< HEAD
+
 	public void modifier (T t);
-=======
-<<<<<<< HEAD
-	public void modifier (T t);
-=======
-	public boolean modifier (T t);
->>>>>>> branch 'master' of https://github.com/Manon1508/projet_Ecole.git
->>>>>>> branch 'master' of https://github.com/Manon1508/projet_Ecole.git
+
 
 	/**
 	 * Cette méthode est faite avec JPQL
@@ -56,9 +50,6 @@ public interface IGestion<T> {
 	 */
 	public List<T> getAll();
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/Manon1508/projet_Ecole.git
 
 }// end Interface
