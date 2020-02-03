@@ -12,7 +12,7 @@ import javax.persistence.PersistenceException;
 public class JpaUtil {
 	
 	private static EntityManager entityManager;
-	private static String pu_name = "03_hibernate_mapping-annotation-jpa_entityManager";
+	private static String pu_name = "01.TP_PROJET_ECOLE";
 	
 	/**
 	 * Récup une entityManager
