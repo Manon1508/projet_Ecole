@@ -11,12 +11,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.intiformation.projetecole.entity.Aide;
+import com.intiformation.projetecole.entity.Administrateur;
 
-public class AideDao implements IGestion<Aide> {
+public class AdministrateurDao implements IGestion<Administrateur> {
 
 	@Override
-	public boolean ajouter(Aide pAide) {
+	public boolean ajouter(Administrateur pAdministrateur) {
 
 		// 2. Récupérer l'entité manager (interaction avec la bdd)
 
@@ -39,7 +39,7 @@ public class AideDao implements IGestion<Aide> {
 		 * retourne une erreur, l'excception PersistenceException
 		 */
 		// try catch (rollback)
-		entityManager.persist(pAide);
+		entityManager.persist(pAdministrateur);
 
 		// 2.6 Validation de la transaction avec la méthode commit
 		transaction.commit();
@@ -71,10 +71,10 @@ public class AideDao implements IGestion<Aide> {
 		 * instance doit être chargée avec d'être détruite dans la Bdd => find()
 		 */
 		// 4.1 chargement du formateur à supprimer
-		Aide aideSupp = em.find(Aide.class, id);
+		Administrateur adminSupp = em.find(Administrateur.class, id);
 
 		// 4.3 suppr du formateur dans la Bdd
-		em.remove(aideSupp);
+		em.remove(adminSupp);
 
 		// 5. validation de la tx
 		tx.commit();
@@ -87,7 +87,7 @@ public class AideDao implements IGestion<Aide> {
 	}
 
 	@Override
-	public Aide getById(int id) {
+	public Administrateur getById(int id) {
 		// 1. récup de la factory
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE");
 
@@ -104,17 +104,17 @@ public class AideDao implements IGestion<Aide> {
 		 * 
 		 * > find() retourne null si aucun enregistrement n'a été effectué
 		 */
-		Aide aide = em.find(Aide.class, id);
+		Administrateur admin = em.find(Administrateur.class, id);
 
 		// 5. libération des ressources : fermeture des ressources :
 		em.close();
 		emf.close();
 
-		return aide;
+		return admin;
 	}
 
 	@Override
-	public void modifier(Aide aide) {
+	public void modifier(Administrateur admin) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE");
 
 		// 2. récup de l'entite manager
@@ -132,17 +132,21 @@ public class AideDao implements IGestion<Aide> {
 		 * instance doit être chargée avec d'être modifiée dans la Bdd => find()
 		 */
 		// 4.1 chargement du formateur à modifier
-		Aide aideModif = em.find(Aide.class, aide.getIdAide());
+		Administrateur adminModif = em.find(Administrateur.class, admin.getIdAdministrateur());
 
-		// donc on modifie l'objet aideMotif avec les paramètres de aide
-		aideModif.setPage(aide.getPage());
-		aideModif.setContenu(aide.getContenu());
+		// donc on modifie l'objet adminMotif avec les paramètres de admin
+		adminModif.setIdAdministrateur(admin.getIdAdministrateur());
+		adminModif.setNom(admin.getNom());
+		adminModif.setPrenom(admin.getPrenom());
+		adminModif.setMdp(admin.getMdp());
+		adminModif.setEmail(admin.getEmail());
+		adminModif.setAdresse(admin.getAdresse());
 
 		// 4.3 modif du formateur dans la Bdd
-		Aide aideMerged = em.merge(aideModif);
+		Administrateur adminMerged = em.merge(adminModif);
 
 		// // 4.4 affichage de la modif
-		// System.out.println(aideMerged);
+		// System.out.println(adminMerged);
 
 		// 5. validation de la tx
 		tx.commit();
@@ -157,7 +161,7 @@ public class AideDao implements IGestion<Aide> {
 	 * Méthode à définir avec JPQL
 	 */
 	@Override
-	public List<Aide> getAll() {
+	public List<Administrateur> getAll() {
 		// 1. Récup de l'EntityManager
 		EntityManager em = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE").createEntityManager();
 
@@ -170,25 +174,25 @@ public class AideDao implements IGestion<Aide> {
 		// => CriteriaQuery = enveloppe dans laquelle on va construire notre requête
 		// définit toutes les requêtes de sélection de Bdd
 		// modéliste tous les clauses de requête Select du JPQL
-		CriteriaQuery<Aide> criteriaQuery = criteriaBuilder.createQuery(Aide.class);
+		CriteriaQuery<Administrateur> criteriaQuery = criteriaBuilder.createQuery(Administrateur.class);
 
 		/**
 		 * Reproduction de la requête JPQL : SELECT e FROM etudiant e
 		 */
 
-		// 2.2.1 Construction du FROM de la requête : FROM aide e
-		Root<Aide> clauseFrom = criteriaQuery.from(Aide.class);
+		// 2.2.1 Construction du FROM de la requête : FROM admin e
+		Root<Administrateur> clauseFrom = criteriaQuery.from(Administrateur.class);
 
 		// 2.2.2 Construction du SELECT de la requête : SELECT e
-		CriteriaQuery<Aide> clauseSELECT = criteriaQuery.select(clauseFrom); // => JPSL : SELECT e FROM etudiant e
+		CriteriaQuery<Administrateur> clauseSELECT = criteriaQuery.select(clauseFrom); // => JPSL : SELECT e FROM etudiant e
 
 		// 3. Transmission de la requête Criteria à l'EntityManager
-		TypedQuery<Aide> getAllQuery = em.createQuery(clauseSELECT);
+		TypedQuery<Administrateur> getAllQuery = em.createQuery(clauseSELECT);
 
 		// 4. Exécution et récup du résultat de la requête
-		List<Aide> listeAides = getAllQuery.getResultList();
+		List<Administrateur> listeAdministrateurs = getAllQuery.getResultList();
 
-		return listeAides;
+		return listeAdministrateurs;
 
 	}
 

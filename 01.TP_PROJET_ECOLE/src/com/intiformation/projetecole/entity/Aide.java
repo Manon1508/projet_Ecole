@@ -1,5 +1,7 @@
 package com.intiformation.projetecole.entity;
 
+import java.io.Serializable;
+
 import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +18,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Aide {
+public class Aide implements Serializable {
 	
 	//_________________ Propriétés ______________//
 	@Id
