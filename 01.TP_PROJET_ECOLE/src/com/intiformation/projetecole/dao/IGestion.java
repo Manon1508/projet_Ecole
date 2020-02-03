@@ -5,6 +5,8 @@ package com.intiformation.projetecole.dao;
 
 import java.util.List;
 
+import com.intiformation.projetecole.entity.Aide;
+
 /**
  * Interface avec les 5 méthodes principales
  * 
@@ -37,7 +39,11 @@ public interface IGestion<T> {
 	 * Méthode générique Modifier
 	 * @return
 	 */
+<<<<<<< HEAD
 	public void modifier (T t);
+=======
+	public boolean modifier (T t);
+>>>>>>> branch 'master' of https://github.com/Manon1508/projet_Ecole.git
 
 	/**
 	 * Cette méthode est faite avec JPQL
@@ -46,6 +52,9 @@ public interface IGestion<T> {
 	 */
 	public List<T> getAll();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/Manon1508/projet_Ecole.git
 
 }// end Interface

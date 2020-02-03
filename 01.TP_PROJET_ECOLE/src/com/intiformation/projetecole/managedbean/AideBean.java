@@ -1,14 +1,19 @@
 package com.intiformation.projetecole.managedbean;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponentBase;
 import javax.faces.component.UIParameter;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 import com.intiformation.projetecole.dao.AideDao;
 import com.intiformation.projetecole.entity.Aide;
@@ -20,15 +25,17 @@ import com.intiformation.projetecole.entity.Aide;
  */
 @ManagedBean(name="aideBean")
 @SessionScoped
-public class AideBean {
-	
-	// 1. Définition d'une aide1 
-	Aide aide1 = new Aide("pPage", "pContenu");
+public class AideBean implements Serializable{
 
+
+	// 1. Définition d'une aide à ajouter
+	Aide aide1 = new Aide("pPage", "pContenu");
+	
 	/*Props*/
+	
 	// liste des aides de la Bdd pour alimenter la data table de aide.xhtml
 	private List<Aide> listeAides;
-	
+
 	// prop aide
 	private Aide aide;
 	
@@ -38,20 +45,53 @@ public class AideBean {
 
 	/**
 	 * ctor vide avec instanciation de la DAO de aide à l'intérieur
-	 * (comme dans le projet Gestion Bibliothèque
+	 * (comme dans le projet Gestion Bibliothèque)
 	 */
 	public AideBean() {
 		aideDao = new AideDao();
+		this.aide=new Aide();
 	}
+	
+	/*encapsulation (de aide uniquement)*/
+
+	/**
+	 * @return the aide
+	 */
+	public Aide getAide() {
+		return aide;
+	}
+
+	/**
+	 * @param aide the aide to set
+	 */
+	public void setAide(Aide aide) {
+		this.aide = aide;
+	}
+
+	
+	/**
+	 * @return the listeAides
+	 */
+	public Collection<Aide> getListeAides() {
+		return listeAides;
+	}
+
+	/**
+	 * @param listeAides the listeAides to set
+	 */
+	public void setListeAides(List<Aide> listeAides) {
+		this.listeAides = listeAides;
+	}
+
 	/*méthodes*/
 	/**
 	 * récupération de la liste des aides dans la Bdd via la Dao. 
 	 * @return
 	 */
-	public Collection<Aide> findAllAidesBdd(){
+	public List<Aide> findAllAidesBdd(){
 		listeAides = aideDao.getAll();
 		return listeAides;
-	} // end findAllLivresBdd()
+	} // end findAllAidesBdd()
 	
 	/**
 	 * méthode invoquée au click du lien "supprimer" de la data table de aide.xhtml
@@ -63,10 +103,10 @@ public class AideBean {
 		UIParameter cp = (UIParameter) event.getComponent()
 											.findComponent("deleteID");
 		
-		// récup de la valeur du param (l'id du livre)
+		// récup de la valeur du param (l'id de l'aide)
 		int aideID = (int) cp.getValue();
 		
-		// suppression du livre dans la Bdd via la dao
+		// suppression de l'aide dans la Bdd via la dao
 		// --> envoi d'un message vers la vue
 		FacesContext context = null;
 		if( aideDao.supprimer(aideID)) {
@@ -104,13 +144,13 @@ public class AideBean {
 		UIParameter cp = (UIParameter) event.getComponent()
 											.findComponent("editID");
 		
-		// récup de la valeur du param (l'id du livre)
+		// récup de la valeur du param (l'id de l'aide)
 		int aideID = (int) cp.getValue();
 		
-		// récup du livre à modifier à partir de la Bdd
+		// récup de l'aide à modifier à partir de la Bdd
 		Aide aideModif = aideDao.getById(aideID);
 		
-		// affectation du livre à modifier à la variable livre du managed bean 
+		// affectation del'aide à modifier à la variable aide du managed bean 
 		setAide(aideModif);
 
 	} // end selectionnerAide() 
@@ -153,30 +193,29 @@ public class AideBean {
 	} // end ajouterNouveauLivre()
 
 	
+    public void onRowEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Aide modifiée", ((UIComponentBase) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", ((UIComponentBase) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+         
+        if(newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "cellule modifiée", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
 	
-	/*encapsulation (de aide uniquement)*/
-
-	/**
-	 * @return the aide
-	 */
-	public Aide getAide() {
-		return aide;
-	}
-
-	/**
-	 * @param aide the aide to set
-	 */
-	public void setAide(Aide aide) {
-		this.aide = aide;
-	}
-	/*et le toString (pour aide uniquement)*/
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "AideBean [aide=" + aide + "]";
-	}
 	
-}
+	
+	
+	
+} // end aideBean

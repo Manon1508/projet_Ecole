@@ -5,4 +5,51 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 
+<!-- CONFIGURATION DE LA NAVIGATION -->
+<!-- 1. règle de navigation pour aide.xhtml -->
+<navigation-rule>
+	<!-- 1.1 page de départ -->
+	<from-view-id>/aide.xhtml</from-view-id>
+	
+	<!-- 1.2 cas de navigation : aide.xhtml vers aide.xhtml (suppression) -->
+	<navigation-case>
+		<!-- 1.2.1 clé d'outcome (attribut action de h:commandLink -->
+		<from-outcome>listAide</from-outcome>
+		<!-- 1.2.2 page de destination -->
+	<to-view-id>/aide.xhtml</to-view-id>
+	</navigation-case>
+	
+	<!-- 1.3 cas de navigation : aide.xhtml vers edit_aide.xhtml (modification)-->
+	<navigation-case>
+		<!-- 1.3.1 clé d'outcome(attribut action de h:commandLink -->
+		<from-outcome>editAide</from-outcome>
+		<!-- 1.3.2 page de destination -->
+	<to-view-id>/edit_aide.xhtml</to-view-id>		
+	</navigation-case>
+	
+	<!-- 1.4 cas de navigation : aide.xhtml vers ajouter_aide.xhtml (modification)-->
+	<navigation-case>
+		<!-- 1.4.1 clé d'outcome(attribut action de h:commandLink -->
+		<from-outcome>aideAdd</from-outcome>
+		<!-- 1.4.2 page de destination -->
+	<to-view-id>/ajouter_aide.xhtml</to-view-id>		
+	</navigation-case>
+</navigation-rule>
+
+<!-- 3. règle de navigation pour ajouter_livre.xhtml -->
+<navigation-rule>
+	<!-- 3.1 page de départ -->
+	<from-view-id>/ajouter_aide.xhtml</from-view-id>
+	
+	<!-- 2.2 cas de naviagtion de ajouter_livre.xhtml vers index.xhtml -->
+	<navigation-case>
+		<!-- 2.2.1 clé d'outcome (attribut action de h:commandButton de ajouter_Livre.xhtml -->
+		<from-outcome>listAide</from-outcome>
+		<!-- 2.2.2 page de destination -->
+	<to-view-id>/aide.xhtml</to-view-id>		
+	</navigation-case>		
+</navigation-rule>
+
+
+
 </faces-config>

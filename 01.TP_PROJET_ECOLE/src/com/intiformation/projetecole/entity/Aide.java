@@ -54,6 +54,7 @@ public class Aide implements Serializable {
 		this.page = page;
 		this.contenu = contenu;
 	}
+
 	/**
 	 * ctor vide
 	 */

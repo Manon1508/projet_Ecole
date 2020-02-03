@@ -2,10 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"> 
 
 <h:head></h:head> 
 <body> 
-	<h1>Bienvenue dans la gestion des ecoles</h1>
-</body> 
+	<!-- 
+		> on utilise notre modèle layout.xhtml pour développer cette facelet.
+	 -->
+	 <!-- injection du modèle (layout.xhtml) -->
+	 <ui:composition template="/templates/layout.xhtml">
+	 	<!-- Définition d'un nouveau contenu pour le contenu principal -->
+	 	<ui:define name="content">
+	 		Bienvenue à l'école animalière
+	 		mettre le menu déroulant
+	<p:commandButton value="MenuAide" >
+    <a href="aide.xhtml" name ="Menu aide"/>   
+    </p:commandButton>
+	 		
+	 	</ui:define>
+	 </ui:composition></body> 
 </html>
