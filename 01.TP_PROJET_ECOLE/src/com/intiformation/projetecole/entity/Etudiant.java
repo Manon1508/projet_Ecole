@@ -4,15 +4,18 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Etudiant extends Personne implements Serializable  {
+public class Etudiant implements Serializable  {
 
 	//________________ Props spéciales ____________//
 	
@@ -20,7 +23,38 @@ public class Etudiant extends Personne implements Serializable  {
 	private String urlPhoto;
 	private String dateNaissance;
 	
-	// =================Association==================//
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_etudiant")
+	private int idEtudiant;
+	
+	@Column(name="mot de passe")
+	private String mdp;
+	
+	@Column(name="nom")
+	private String nom;
+	
+	@Column(name="prenom")
+	private String prenom;
+	
+	@Column(name="email")
+	private String email;
+	
+	
+	//=================Association==================//
+	/**
+	 * Type de la relation: une etudiant associé à une adresse
+	 * 						one Etudiant to one Adresse => @OneToOne
+	 * 
+	 * relation de cascade avec : cascade = CascadeType.Persist
+	 * 	->Ajout
+	 * 
+	 */
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="ADRESSE_ID", // nom de la FK 
+				referencedColumnName="idAdresse")// nom de la colonne dans la classe associée // gestion de la FK
+	private Adresse adresse;
+	
 
 	/**
 	 * Type de la relation: Many Etudiant to Many Promotion
@@ -65,19 +99,23 @@ public class Etudiant extends Personne implements Serializable  {
 	 * @param listePromotions
 	 * @param listeEtudiants
 	 */
-	public Etudiant(String mdp, String nom, String prenom, String email, String urlPhoto,
-			String dateNaissance, List<Promotion> listePromotions, List<EtudiantCours> listeEtudiants) {
-		super( mdp, nom, prenom, email);
+	public Etudiant(String urlPhoto, String dateNaissance, String mdp, String nom, String prenom, String email,
+			Adresse adresse, List<Promotion> listePromotions, List<EtudiantCours> listeEtudiants) {
+		super();
 		this.urlPhoto = urlPhoto;
 		this.dateNaissance = dateNaissance;
+		this.mdp = mdp;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.adresse = adresse;
 		this.listePromotions = listePromotions;
 		this.listeEtudiants = listeEtudiants;
 	}
-	
 
 	/**
 	 * ctor complet
-	 * @param idPersonne
+	 * @param idEtudiant
 	 * @param mdp
 	 * @param nom
 	 * @param prenom
@@ -87,11 +125,17 @@ public class Etudiant extends Personne implements Serializable  {
 	 * @param listePromotions
 	 * @param listeEtudiants
 	 */
-	public Etudiant(int idPersonne, String mdp, String nom, String prenom, String email, String urlPhoto,
-			String dateNaissance, List<Promotion> listePromotions, List<EtudiantCours> listeEtudiants) {
-		super(idPersonne, mdp, nom, prenom, email);
+	public Etudiant(String urlPhoto, String dateNaissance, int idEtudiant, String mdp, String nom, String prenom,
+			String email, Adresse adresse, List<Promotion> listePromotions, List<EtudiantCours> listeEtudiants) {
+		super();
 		this.urlPhoto = urlPhoto;
 		this.dateNaissance = dateNaissance;
+		this.idEtudiant = idEtudiant;
+		this.mdp = mdp;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.adresse = adresse;
 		this.listePromotions = listePromotions;
 		this.listeEtudiants = listeEtudiants;
 	}
@@ -101,6 +145,9 @@ public class Etudiant extends Personne implements Serializable  {
 
 
 	//_________________G/S______________________//
+
+
+
 
 	public List<Promotion> getListePromotions() {
 		return listePromotions;
@@ -142,14 +189,73 @@ public class Etudiant extends Personne implements Serializable  {
 	}
 
 
+	public int getIdEtudiant() {
+		return idEtudiant;
+	}
+
+
+	public void setIdEtudiant(int idEtudiant) {
+		this.idEtudiant = idEtudiant;
+	}
+
+
+	public String getMdp() {
+		return mdp;
+	}
+
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Etudiant [urlPhoto=" + urlPhoto + ", dateNaissance=" + dateNaissance + ", listePromotions="
-				+ listePromotions + ", listeEtudiants=" + listeEtudiants + ", getIdPersonne()=" + getIdPersonne()
-				+ ", getMdp()=" + getMdp() + ", getNom()=" + getNom() + ", getPrenom()=" + getPrenom() + ", getEmail()="
-				+ getEmail() + ", getAdresse()=" + getAdresse() + ", toString()=" + super.toString() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + "]";
+		return "Etudiant [urlPhoto=" + urlPhoto + ", dateNaissance=" + dateNaissance + ", idEtudiant=" + idEtudiant
+				+ ", mdp=" + mdp + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", adresse=" + adresse
+				+ ", listePromotions=" + listePromotions + ", listeEtudiants=" + listeEtudiants + "]";
 	}
+
 
 
 	

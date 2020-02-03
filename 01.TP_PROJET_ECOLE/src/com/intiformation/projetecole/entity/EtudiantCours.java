@@ -73,6 +73,46 @@ public class EtudiantCours implements Serializable {
 		return "EtudiantCours [idEtudiantCours=" + idEtudiantCours + ", motif=" + motif + ", absence=" + absence
 				+ ", cours=" + cours + ", etudiant=" + etudiant + "]";
 	}
+
+	public int getIdEtudiantCours() {
+		return idEtudiantCours;
+	}
+
+	public void setIdEtudiantCours(int idEtudiantCours) {
+		this.idEtudiantCours = idEtudiantCours;
+	}
+
+	public String getMotif() {
+		return motif;
+	}
+
+	public void setMotif(String motif) {
+		this.motif = motif;
+	}
+
+	public String getAbsence() {
+		return absence;
+	}
+
+	public void setAbsence(String absence) {
+		this.absence = absence;
+	}
+
+	public Cours getCours() {
+		return cours;
+	}
+
+	public void setCours(Cours cours) {
+		this.cours = cours;
+	}
+
+	public Etudiant getEtudiant() {
+		return etudiant;
+	}
+
+	public void setEtudiant(Etudiant etudiant) {
+		this.etudiant = etudiant;
+	}
 	
 	
 

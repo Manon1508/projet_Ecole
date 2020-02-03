@@ -11,15 +11,13 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import com.intiformation.projetecole.entity.Cours;
 import com.intiformation.projetecole.entity.Aide;
 
-public class CoursDao implements IGestion<Aide> {
+public class CoursDao implements IGestion<Cours> {
 
 	@Override
-	public boolean ajouter(Aide pAide) {
-
-		// 1. Définition d'une aide à ajouter
-		//Aide aide = new Aide("pPage", "pContenu");
+	public boolean ajouter(Cours pCours) {
 
 		// 2. Récupérer l'entité manager (interaction avec la bdd)
 
@@ -42,7 +40,7 @@ public class CoursDao implements IGestion<Aide> {
 		 * retourne une erreur, l'excception PersistenceException
 		 */
 		// try catch (rollback)
-		entityManager.persist(aide);
+		entityManager.persist(pCours);
 
 		// 2.6 Validation de la transaction avec la méthode commit
 		transaction.commit();
@@ -58,31 +56,30 @@ public class CoursDao implements IGestion<Aide> {
 	public boolean supprimer(int id) {
 		// 1. récup de la factory
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE");
-		
+
 		// 2. récup de l'entite manager
 		EntityManager em = emf.createEntityManager();
-		
+
 		// 3. récup d'une transaction
 		EntityTransaction tx = em.getTransaction();
-		
-			// 3.1 ouverture de la tx
-			tx.begin();
-			
+
+		// 3.1 ouverture de la tx
+		tx.begin();
+
 		// 4. modif
 		/**
-		 * > La suppression se fait avec la méthode remove() de l'entity manager
-		 * > Une instance doit être chargée avec d'être détruite dans la Bdd
-		 *   => find()
+		 * > La suppression se fait avec la méthode remove() de l'entity manager > Une
+		 * instance doit être chargée avec d'être détruite dans la Bdd => find()
 		 */
-			// 4.1 chargement du formateur à modifier
-			Aide aideSupp = em.find(Aide.class, 2);
-			
-			// 4.3 suppr du formateur dans la Bdd
-			em.remove(aideSupp);
-			
+		// 4.1 chargement du formateur à supprimer
+		Cours coursSupp = em.find(Cours.class, id);
+
+		// 4.3 suppr du formateur dans la Bdd
+		em.remove(coursSupp);
+
 		// 5. validation de la tx
 		tx.commit();
-		
+
 		// 6. libération des ressources
 		em.close();
 		emf.close();
@@ -91,76 +88,76 @@ public class CoursDao implements IGestion<Aide> {
 	}
 
 	@Override
-	public Aide getById(int id) {
+	public Cours getById(int id) {
 		// 1. récup de la factory
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE");
-		
+
 		// 2. récup de l'entite manager
 		EntityManager em = emf.createEntityManager();
-		
+
 		/**
 		 * NB : le get by id ne nécessite pas de transaction
 		 */
-		
+
 		// 3. récup d'un formateur par son id (pk)
 		/**
 		 * > via la méthode find(classe entité, clé primaire) de l'EM
 		 * 
 		 * > find() retourne null si aucun enregistrement n'a été effectué
 		 */
-		Aide aide = em.find(Aide.class, 1);
-		
-		// 4. affichage
-		System.out.println("Get aide by id : ");
-		System.out.println("\t " + aide);
-		
-		// 5. libération des ressources : fermeture des ressources : 
+		Cours cours = em.find(Cours.class, id);
+
+		// 5. libération des ressources : fermeture des ressources :
 		em.close();
 		emf.close();
 
-		return aide;
+		return cours;
 	}
 
 	@Override
-	public boolean modifier(Aide t) {
-		// 1. récup de la factory
+	public void modifier(Cours cours) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE");
-		
+
 		// 2. récup de l'entite manager
 		EntityManager em = emf.createEntityManager();
-		
+
 		// 3. récup d'une transaction
 		EntityTransaction tx = em.getTransaction();
-		
-			// 3.1 ouverture de la tx
-			tx.begin();
-			
+
+		// 3.1 ouverture de la tx
+		tx.begin();
+
 		// 4. modif
 		/**
-		 * > La modification se fait avec la méthode merge() de l'entity manager
-		 * > Une instance doit être chargée avec d'être modifiée dans la Bdd
-		 *   => find()
+		 * > La modification se fait avec la méthode merge() de l'entity manager > Une
+		 * instance doit être chargée avec d'être modifiée dans la Bdd => find()
 		 */
-			// 4.1 chargement du formateur à modifier
-			Aide aideModif = em.find(Aide.class, 1);
-			
-			// 4.2 modif du formateur
-			aideModif.setPage("INDEX");
-			aideModif.setContenu("Bienvenue sur le projet WebCole dédié à l'apprentissage de JavaEE");
-			
-			// 4.3 modif du formateur dans la Bdd
-			Aide aideMerged = em.merge(aideModif);
-			
-			// 4.4 affichage de la modif
-			System.out.println(aideMerged);
-			
+		// 4.1 chargement du formateur à modifier
+		Cours coursModif = em.find(Cours.class, cours.getIdCours());
+
+		// donc on modifie l'objet coursMotif avec les paramètres de cours
+		coursModif.setIdCours(cours.getIdCours());
+		coursModif.setDate(cours.getDate());
+		coursModif.setDescription(cours.getDescription());
+		coursModif.setDuree(cours.getDuree());
+		coursModif.setLibelle(cours.getLibelle());
+		coursModif.setMatiere(cours.getMatiere());
+		coursModif.setPromotion(cours.getPromotion());
+		coursModif.setListeEtudiants(cours.getListeEtudiants());
+
+
+		// 4.3 modif du formateur dans la Bdd
+		Cours coursMerged = em.merge(coursModif);
+
+		// // 4.4 affichage de la modif
+		// System.out.println(coursMerged);
+
 		// 5. validation de la tx
 		tx.commit();
-		
+
 		// 6. libération des ressources
 		em.close();
 		emf.close();
-		return false;
 
 	}
 
@@ -168,44 +165,39 @@ public class CoursDao implements IGestion<Aide> {
 	 * Méthode à définir avec JPQL
 	 */
 	@Override
-	public List<Aide> getAll() {
+	public List<Cours> getAll() {
 		// 1. Récup de l'EntityManager
-		EntityManager em = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE")
-									  .createEntityManager();
-		
+		EntityManager em = Persistence.createEntityManagerFactory("01.TP_PROJET_ECOLE").createEntityManager();
+
 		// 2. Construction de la requête de type Criteria
-			// 2.1 Récup de l'interface principale de l'API Criteria à partir de l'EM
-			// => CriteriaBuilder permet de construire la requête
-			CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-			
-			// 2.2 récup d'une instance de type CriteriaQuery
-			// => CriteriaQuery = enveloppe dans laquelle on va construire notre requête
-			// 					  définit toutes les requêtes de sélection de Bdd
-			// 					  modéliste tous les clauses de requête Select du JPQL
-			CriteriaQuery<Aide> criteriaQuery = criteriaBuilder.createQuery(Aide.class);
-			
-			/**
-			 * Reproduction de la requête JPQL : SELECT e FROM etudiant e
-			 */
-			
-				// 2.2.1 Construction du FROM de la requête : FROM aide e
-				Root<Aide> clauseFrom = criteriaQuery.from(Aide.class);
-				
-				// 2.2.2 Construction du SELECT de la requête : SELECT e
-				CriteriaQuery<Aide> clauseSELECT = criteriaQuery.select(clauseFrom); // => JPSL : SELECT e FROM etudiant e
-				
+		// 2.1 Récup de l'interface principale de l'API Criteria à partir de l'EM
+		// => CriteriaBuilder permet de construire la requête
+		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+
+		// 2.2 récup d'une instance de type CriteriaQuery
+		// => CriteriaQuery = enveloppe dans laquelle on va construire notre requête
+		// définit toutes les requêtes de sélection de Bdd
+		// modéliste tous les clauses de requête Select du JPQL
+		CriteriaQuery<Cours> criteriaQuery = criteriaBuilder.createQuery(Cours.class);
+
+		/**
+		 * Reproduction de la requête JPQL : SELECT e FROM etudiant e
+		 */
+
+		// 2.2.1 Construction du FROM de la requête : FROM cours e
+		Root<Cours> clauseFrom = criteriaQuery.from(Cours.class);
+
+		// 2.2.2 Construction du SELECT de la requête : SELECT e
+		CriteriaQuery<Cours> clauseSELECT = criteriaQuery.select(clauseFrom); // => JPSL : SELECT e FROM etudiant e
+
 		// 3. Transmission de la requête Criteria à l'EntityManager
-		TypedQuery<Aide> getAllQuery = em.createQuery(clauseSELECT);
-		
+		TypedQuery<Cours> getAllQuery = em.createQuery(clauseSELECT);
+
 		// 4. Exécution et récup du résultat de la requête
-		List<Aide> listeAides = getAllQuery.getResultList();
-		
-		// 5. Affichage
-		System.out.println("Liste des étudiants dans la Bdd : ");
-		for (Aide help : listeAides) {
-			System.out.println(help);
-		}
-		return listeAides;
+		List<Cours> listeCourss = getAllQuery.getResultList();
+
+		return listeCourss;
+
 
 	}
 }// end class
