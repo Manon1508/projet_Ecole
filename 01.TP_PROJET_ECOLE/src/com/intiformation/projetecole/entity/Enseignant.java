@@ -68,7 +68,7 @@ public class Enseignant extends Personne implements Serializable {
 	 */
 	public Enseignant(int idPersonne, String mdp, String nom, String prenom, String email) {
 		super(idPersonne, mdp, nom, prenom, email);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
@@ -81,6 +81,22 @@ public class Enseignant extends Personne implements Serializable {
 	public Enseignant(String mdp, String nom, String prenom, String email) {
 		super(mdp, nom, prenom, email);
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	/**
+	 * ctor ss id avec adresse
+	 * @param mdp
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param adresse
+	 */
+	
+	public Enseignant( String mdp, String nom, String prenom, String email, Adresse adresse) {
+		super( mdp, nom, prenom, email);
+		this.adresse = adresse;
 	}
 
 	public Adresse getAdresse() {

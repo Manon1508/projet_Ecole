@@ -76,8 +76,9 @@ public class Administrateur extends Personne implements Serializable {
 		 * @param string3
 		 * @param string4
 		 */
-		public Administrateur(String string, String string2, String string3, String string4) {
-
+		public Administrateur(String mdp, String nom, String prenom, String email, Adresse adresse) {
+			super( mdp, nom, prenom, email);
+			this.adresse = adresse;
 		}
 
 		public Adresse getAdresse() {
