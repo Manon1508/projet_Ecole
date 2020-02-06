@@ -132,10 +132,10 @@ public class AdministrateurDao implements IGestion<Administrateur> {
 		 * instance doit être chargée avec d'être modifiée dans la Bdd => find()
 		 */
 		// 4.1 chargement du formateur à modifier
-		Administrateur adminModif = em.find(Administrateur.class, admin.getIdAdministrateur());
+		Administrateur adminModif = em.find(Administrateur.class, admin.getIdPersonne());
 
 		// donc on modifie l'objet adminMotif avec les paramètres de admin
-		adminModif.setIdAdministrateur(admin.getIdAdministrateur());
+		adminModif.setIdPersonne(admin.getIdPersonne());
 		adminModif.setNom(admin.getNom());
 		adminModif.setPrenom(admin.getPrenom());
 		adminModif.setMdp(admin.getMdp());

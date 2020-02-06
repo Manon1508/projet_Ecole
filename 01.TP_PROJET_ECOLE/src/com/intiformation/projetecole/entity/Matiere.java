@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -25,18 +27,28 @@ public class Matiere implements Serializable {
 
 	// =================Association==================//
 
-	/*--------- AMELIORATION POUR AVOIR 2 TABLES */
-	@OneToMany(mappedBy="promotion", targetEntity=Cours.class, cascade=CascadeType.ALL)
+	/**
+	 * asso avec promo qui donne enseigne
+	 */
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Enseigne", joinColumns=@JoinColumn(name="MATIERE_ID"), inverseJoinColumns=@JoinColumn(name="PROMOTION_ID"))
+	private List<Promotion> listePromotions;
+	
+	/**
+	 * asso avec enseignant qui donne enseigne
+	 */
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Enseigne", joinColumns=@JoinColumn(name="MATIERE_ID"), inverseJoinColumns=@JoinColumn(name="ENSEIGNANT_ID"))
+	private List<Enseignant> listeEnseignants;
+	
+	/**
+	 * 
+	 * asso avec cours 
+	 */
+	@OneToMany(mappedBy="matiere", targetEntity=Cours.class, cascade=CascadeType.ALL)
 	// 'session' se récupère dans asso de module
 	private List<Cours> listeCours;
 	
-	/**
-	 * Type de relation : One enseigne to Many Matiere
-	 */
-//	@OneToMany(mappedBy="enseigne", targetEntity=Matiere.class, cascade=CascadeType.ALL)
-//	// 'session' se récupère dans asso de module
-//	private List<Matiere> listeMatieres;
-//	
 
 	// _____________ctor__________//
 
@@ -87,18 +99,29 @@ public class Matiere implements Serializable {
 		this.libelle = libelle;
 	}
 
-	public List<Cours> getListeCours() {
-		return listeCours;
+
+	public List<Promotion> getListePromotions() {
+		return listePromotions;
 	}
 
-	public void setListeCours(List<Cours> listeCours) {
-		this.listeCours = listeCours;
+	public void setListePromotions(List<Promotion> listePromotions) {
+		this.listePromotions = listePromotions;
+	}
+
+	public List<Enseignant> getListeEnseignants() {
+		return listeEnseignants;
+	}
+
+	public void setListeEnseignants(List<Enseignant> listeEnseignants) {
+		this.listeEnseignants = listeEnseignants;
 	}
 
 	@Override
 	public String toString() {
-		return "Matiere [idMatiere=" + idMatiere + ", libelle=" + libelle + ", listeCours=" + listeCours + "]";
+		return "Matiere [idMatiere=" + idMatiere + ", libelle=" + libelle + ", listePromotions=" + listePromotions
+				+ ", listeEnseignants=" + listeEnseignants + "]";
 	}
+
 
 	
 

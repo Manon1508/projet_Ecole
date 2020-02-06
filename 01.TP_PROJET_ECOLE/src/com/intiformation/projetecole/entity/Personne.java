@@ -4,14 +4,18 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Personne implements Serializable  {
 	
 	//_________________ Propriétés ______________//
@@ -20,7 +24,7 @@ public class Personne implements Serializable  {
 		@Column(name="id_personne")
 		private int idPersonne;
 		
-		@Column(name="mot de passe")
+		@Column(name="motDePasse")
 		private String mdp;
 		
 		@Column(name="nom")
@@ -44,7 +48,7 @@ public class Personne implements Serializable  {
 		 */
 		@OneToOne(cascade=CascadeType.ALL)
 		@JoinColumn(name="ADRESSE_ID", // nom de la FK 
-					referencedColumnName="idAdresse")// nom de la colonne dans la classe associée // gestion de la FK
+					referencedColumnName="id_adresse")// nom de la colonne dans la classe associée // gestion de la FK
 		private Adresse adresse;
 		
 		//_________________ Ctors ______________//

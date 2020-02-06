@@ -2,6 +2,7 @@ package com.intiformation.projetecole.test;
 
 import com.intiformation.projetecole.dao.AideDao;
 import com.intiformation.projetecole.entity.Aide;
+import com.intiformation.projetecole.entity.Etudiant;
 
 public class AppTest {
 
@@ -57,6 +58,8 @@ public class AppTest {
 
 		 //System.out.println("Supprimer---------------");
 		 //aideDao.supprimer(13);
+		 
+
 	}// end main
 
 }// end classe

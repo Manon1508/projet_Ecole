@@ -20,7 +20,7 @@ public class Adresse implements Serializable {
 	@Column(name = "rue")
 	private String rue;
 
-	@Column(name = "code postal")
+	@Column(name = "code_postal")
 	private String cp;
 
 	@Column(name = "ville")

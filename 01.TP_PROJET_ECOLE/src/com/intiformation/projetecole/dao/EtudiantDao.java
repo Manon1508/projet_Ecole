@@ -133,10 +133,10 @@ public class EtudiantDao implements IGestion<Etudiant> {
 		 * instance doit être chargée avec d'être modifiée dans la Bdd => find()
 		 */
 		// 4.1 chargement du formateur à modifier
-		Etudiant etudiantModif = em.find(Etudiant.class, etudiant.getIdEtudiant());
+		Etudiant etudiantModif = em.find(Etudiant.class, etudiant.getIdPersonne());
 
 		// donc on modifie l'objet etudiantMotif avec les paramètres de etudiant
-		etudiantModif.setIdEtudiant(etudiant.getIdEtudiant());
+		etudiantModif.setIdPersonne(etudiant.getIdPersonne());
 		etudiantModif.setNom(etudiant.getNom());
 		etudiantModif.setPrenom(etudiant.getPrenom());
 		etudiantModif.setMdp(etudiant.getMdp());
@@ -144,8 +144,9 @@ public class EtudiantDao implements IGestion<Etudiant> {
 		etudiantModif.setAdresse(etudiant.getAdresse());
 		etudiantModif.setDateNaissance(etudiant.getDateNaissance());
 		etudiantModif.setUrlPhoto(etudiant.getUrlPhoto());
-		etudiantModif.setListeEtudiants(etudiant.getListeEtudiants());
 		etudiantModif.setListePromotions(etudiant.getListePromotions());
+		etudiantModif.setListeCours(etudiant.getListeCours());
+
 
 
 		// 4.3 modif du formateur dans la Bdd

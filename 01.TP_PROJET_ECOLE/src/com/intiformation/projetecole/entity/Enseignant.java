@@ -10,30 +10,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Enseignant implements Serializable {
+public class Enseignant extends Personne implements Serializable {
 
 	
 	//________________ Props spéciales ____________//
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_enseignant")
-	private int idEnseignant;
-	
-	@Column(name="mot de passe")
-	private String mdp;
-	
-	@Column(name="nom")
-	private String nom;
-	
-	@Column(name="prenom")
-	private String prenom;
-	
-	@Column(name="email")
-	private String email;
+
 	
 	
 	//=================Association==================//
@@ -47,16 +34,20 @@ public class Enseignant implements Serializable {
 	 */
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="ADRESSE_ID", // nom de la FK 
-				referencedColumnName="idAdresse")// nom de la colonne dans la classe associée // gestion de la FK
+				referencedColumnName="id_adresse")// nom de la colonne dans la classe associée // gestion de la FK
 	private Adresse adresse;
 	
-//  	/**
-//  	 * Type de relation : One enseigne to Many enseignant
-//  	 */
-//  	@OneToMany(mappedBy=" Enseignant", targetEntity=Enseigne.class, cascade=CascadeType.ALL)
-//  	 //  'session' se récupère dans asso de module
-//  	private List<Enseigne> listeEnseignes;
-//  	
+	// FAIRE ENSEIGNE
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Enseigne", joinColumns=@JoinColumn(name="ENSEIGNANT_ID"), inverseJoinColumns=@JoinColumn(name="MATIERE_ID"))
+	private List<Matiere> listeMatieres;
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Enseigne", joinColumns=@JoinColumn(name="ENSEIGNANT_ID"), inverseJoinColumns=@JoinColumn(name="PROMOTION_ID"))
+	private List<Promotion> listePromotions;
+	
+	
 	//________________ Ctors ____________//
 	
 	/**
@@ -75,16 +66,10 @@ public class Enseignant implements Serializable {
 	 * @param prenom
 	 * @param email
 	 */
-	public Enseignant(int idEnseignant, String mdp, String nom, String prenom, String email, Adresse adresse) {
-		super();
-		this.idEnseignant = idEnseignant;
-		this.mdp = mdp;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.adresse = adresse;
+	public Enseignant(int idPersonne, String mdp, String nom, String prenom, String email) {
+		super(idPersonne, mdp, nom, prenom, email);
+		// TODO Auto-generated constructor stub
 	}
-
 
 	/**
 	 * ctor ss id
@@ -93,63 +78,9 @@ public class Enseignant implements Serializable {
 	 * @param prenom
 	 * @param email
 	 */
-	public Enseignant(String mdp, String nom, String prenom, String email, Adresse adresse) {
-		super();
-		this.mdp = mdp;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.adresse = adresse;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Enseignant [idEnseignant=" + idEnseignant + ", mdp=" + mdp + ", nom=" + nom + ", prenom=" + prenom
-				+ ", email=" + email + ", adresse=" + adresse + "]";
-	}
-
-	
-
-	public int getIdEnseignant() {
-		return idEnseignant;
-	}
-
-	public void setIdEnseignant(int idEnseignant) {
-		this.idEnseignant = idEnseignant;
-	}
-
-	public String getMdp() {
-		return mdp;
-	}
-
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public Enseignant(String mdp, String nom, String prenom, String email) {
+		super(mdp, nom, prenom, email);
+		// TODO Auto-generated constructor stub
 	}
 
 	public Adresse getAdresse() {
@@ -160,6 +91,34 @@ public class Enseignant implements Serializable {
 		this.adresse = adresse;
 	}
 
+	public List<Matiere> getListeMatieres() {
+		return listeMatieres;
+	}
+
+	public void setListeMatieres(List<Matiere> listeMatieres) {
+		this.listeMatieres = listeMatieres;
+	}
+
+	public List<Promotion> getListePromotions() {
+		return listePromotions;
+	}
+
+	public void setListePromotions(List<Promotion> listePromotions) {
+		this.listePromotions = listePromotions;
+	}
+
+	@Override
+	public String toString() {
+		return "Enseignant [adresse=" + adresse + ", listeMatieres=" + listeMatieres + ", listePromotions="
+				+ listePromotions + ", getAdresse()=" + getAdresse() + ", getListeMatieres()=" + getListeMatieres()
+				+ ", getListePromotions()=" + getListePromotions() + ", getIdPersonne()=" + getIdPersonne()
+				+ ", getMdp()=" + getMdp() + ", getNom()=" + getNom() + ", getPrenom()=" + getPrenom() + ", getEmail()="
+				+ getEmail() + ", toString()=" + "]";
+	}
+
+
+	
+	
 
 
 	

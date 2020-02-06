@@ -140,7 +140,8 @@ public class PromotionDao implements IGestion<Promotion> {
 		promotionModif.setIdPromotion(promotion.getIdPromotion());
 		promotionModif.setLibelle(promotion.getLibelle());
 		promotionModif.setListeCours(promotion.getListeCours());
-		promotionModif.setListeEtudiants(promotion.getListeEtudiants());
+		promotionModif.setListeEnseignants(promotion.getListeEnseignants());
+		promotionModif.setListeMatieres(promotion.getListeMatieres());
 
 
 		// 4.3 modif du formateur dans la Bdd

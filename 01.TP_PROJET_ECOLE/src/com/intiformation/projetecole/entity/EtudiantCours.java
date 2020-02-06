@@ -27,7 +27,7 @@ public class EtudiantCours implements Serializable {
 	private Cours cours;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ETUDIANT_ID", referencedColumnName = "idEtudiant")
+	@JoinColumn(name = "ETUDIANT_ID", referencedColumnName = "id_personne")
 	private Etudiant etudiant;
 	
 	//_______________ctor___________//

@@ -132,10 +132,10 @@ public class EnseignantDao implements IGestion<Enseignant> {
 		 * instance doit être chargée avec d'être modifiée dans la Bdd => find()
 		 */
 		// 4.1 chargement du formateur à modifier
-		Enseignant enseignantModif = em.find(Enseignant.class, enseignant.getIdEnseignant());
+		Enseignant enseignantModif = em.find(Enseignant.class, enseignant.getIdPersonne());
 
 		// donc on modifie l'objet enseignantMotif avec les paramètres de enseignant
-		enseignantModif.setIdEnseignant(enseignant.getIdEnseignant());
+		enseignantModif.setIdPersonne(enseignant.getIdPersonne());
 		enseignantModif.setNom(enseignant.getNom());
 		enseignantModif.setPrenom(enseignant.getPrenom());
 		enseignantModif.setMdp(enseignant.getMdp());

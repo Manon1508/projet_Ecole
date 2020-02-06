@@ -139,8 +139,8 @@ public class MatiereDao implements IGestion<Matiere> {
 		// donc on modifie l'objet matiereMotif avec les paramètres de matiere
 		matiereModif.setIdMatiere(matiere.getIdMatiere());
 		matiereModif.setLibelle(matiere.getLibelle());
-		matiereModif.setListeCours(matiere.getListeCours());
-
+		matiereModif.setListeEnseignants(matiere.getListeEnseignants());
+		matiereModif.setListePromotions(matiere.getListePromotions());
 
 		// 4.3 modif du formateur dans la Bdd
 		Matiere matiereMerged = em.merge(matiereModif);

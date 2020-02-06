@@ -11,25 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 @Entity
-public class Administrateur implements Serializable {
+public class Administrateur extends Personne implements Serializable {
 
 	//________________ Props spéciales ____________//
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_personne")
-	private int idAdministrateur;
-	
-	@Column(name="mot de passe")
-	private String mdp;
-	
-	@Column(name="nom")
-	private String nom;
-	
-	@Column(name="prenom")
-	private String prenom;
-	
-	@Column(name="email")
-	private String email;
 	
 	
 	//=================Association==================//
@@ -43,7 +27,7 @@ public class Administrateur implements Serializable {
 	 */
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="ADRESSE_ID", // nom de la FK 
-				referencedColumnName="idAdresse")// nom de la colonne dans la classe associée // gestion de la FK
+				referencedColumnName="id_adresse")// nom de la colonne dans la classe associée // gestion de la FK
 	private Adresse adresse;
 		
 		
@@ -58,7 +42,7 @@ public class Administrateur implements Serializable {
 		}
 
 		/**
-		 * ctor complet
+		 * ctor ss asso
 		 * @param idAdministrateur
 		 * @param mdp
 		 * @param nom
@@ -66,80 +50,34 @@ public class Administrateur implements Serializable {
 		 * @param email
 		 * @param adresse
 		 */
-		public Administrateur(int idAdministrateur, String mdp, String nom, String prenom, String email, Adresse adresse) {
-			super();
-			this.idAdministrateur = idAdministrateur;
-			this.mdp = mdp;
-			this.nom = nom;
-			this.prenom = prenom;
-			this.email = email;
-			this.adresse = adresse;
+		public Administrateur(int idPersonne, String mdp, String nom, String prenom, String email) {
+			super(idPersonne, mdp, nom, prenom, email);
+
 		}
 
-
 		
-
 		/**
-		 * Ctor ss id
+		 * Ctor avec ad
 		 * @param mdp
 		 * @param nom
 		 * @param prenom
 		 * @param email
 		 * @param adresse
 		 */
-		public Administrateur(String mdp, String nom, String prenom, String email, Adresse adresse) {
-			super();
-			this.mdp = mdp;
-			this.nom = nom;
-			this.prenom = prenom;
-			this.email = email;
+		public Administrateur(int idPersonne, String mdp, String nom, String prenom, String email, Adresse adresse) {
+			super(idPersonne, mdp, nom, prenom, email);
 			this.adresse = adresse;
 		}
 
-		@Override
-		public String toString() {
-			return "Administrateur [idAdministrateur=" + idAdministrateur + ", mdp=" + mdp + ", nom=" + nom + ", prenom=" + prenom
-					+ ", email=" + email + ", adresse=" + adresse + "]";
-		}
+		/**
+		 * ctor ss is ss asso
+		 * @param string
+		 * @param string2
+		 * @param string3
+		 * @param string4
+		 */
+		public Administrateur(String string, String string2, String string3, String string4) {
 
-		public int getIdAdministrateur() {
-			return idAdministrateur;
-		}
-
-		public void setIdAdministrateur(int idAdministrateur) {
-			this.idAdministrateur = idAdministrateur;
-		}
-
-		public String getMdp() {
-			return mdp;
-		}
-
-		public void setMdp(String mdp) {
-			this.mdp = mdp;
-		}
-
-		public String getNom() {
-			return nom;
-		}
-
-		public void setNom(String nom) {
-			this.nom = nom;
-		}
-
-		public String getPrenom() {
-			return prenom;
-		}
-
-		public void setPrenom(String prenom) {
-			this.prenom = prenom;
-		}
-
-		public String getEmail() {
-			return email;
-		}
-
-		public void setEmail(String email) {
-			this.email = email;
 		}
 
 		public Adresse getAdresse() {
@@ -150,8 +88,18 @@ public class Administrateur implements Serializable {
 			this.adresse = adresse;
 		}
 
+		@Override
+		public String toString() {
+			return "Administrateur [adresse=" + adresse + ", getAdresse()=" + getAdresse() + ", getIdPersonne()="
+					+ getIdPersonne() + ", getMdp()=" + getMdp() + ", getNom()=" + getNom() + ", getPrenom()="
+					+ getPrenom() + ", getEmail()=" + getEmail() + ", toString()=" + super.toString() + ", getClass()="
+					+ getClass() + ", hashCode()=" + hashCode() + "]";
+		}
+
+
+
+
 		
-		// Ajouter les G/S des associations
 		
 		
 		

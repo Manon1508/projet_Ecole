@@ -27,24 +27,40 @@ public class Cours implements Serializable {
 
 	// =================Association==================//
 
+	
+	
+	/**
+	 * asso avec matiere
+	 */
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "MATTIERE_ID", referencedColumnName = "idMatiere")
+	private Matiere matiere;
+	
+	
 	/**
 	 * Type de la relation: Many cours to One promotion est le côté porteur de la FK
 	 * => ajout de @JoinColumn
+	 * asso avec promo 
 	 */
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PROMOTION_ID", referencedColumnName = "idPromotion")
 	private Promotion promotion;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "MATTIERE_ID", referencedColumnName = "idMatiere")
-	private Matiere matiere;
+
+	
+
+	
 
 	/**
 	 * Type de relation : One Session to Many Module
+	 * assoc avec etudiant / etudiantcours
 	 */
 	@OneToMany(mappedBy = "cours", targetEntity = EtudiantCours.class, cascade = CascadeType.ALL)
 	// 'etudiant' se récupère dans asso de EtudiantCours
 	private List<EtudiantCours> listeEtudiants;
+	
+	// MARIE @OneToMany(targetEntity=EtudiantCours.class, cascade=CascadeType.ALL, mappedBy="cours")
+	//private List<EtudiantCours> listeEtudiantCours;
 
 	// _____________ctor__________//
 
