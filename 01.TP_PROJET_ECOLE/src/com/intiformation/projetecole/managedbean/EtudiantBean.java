@@ -16,6 +16,7 @@ import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import com.intiformation.projetecole.dao.EtudiantDao;
+import com.intiformation.projetecole.entity.Adresse;
 import com.intiformation.projetecole.entity.Etudiant;
 
 /**
@@ -29,7 +30,8 @@ public class EtudiantBean implements Serializable{
 
 
 	// 1. Définition d'une etudiant à ajouter
-	// Etudiant etudiant1 = new Etudiant("pMpd", "pNom", "pPrenom", "pEmail", dateNaissance, adresse)
+	Adresse adresse1 = new Adresse("pRue", "pCp", "pVille");
+	Etudiant etudiant1 = new Etudiant("pMpd", "pNom", "pPrenom", "pEmail", "pDate", adresse1);
 	
 	/*Props*/
 	
