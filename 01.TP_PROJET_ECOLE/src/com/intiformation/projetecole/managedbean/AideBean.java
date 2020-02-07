@@ -134,6 +134,23 @@ public class AideBean implements Serializable{
 	} // end supprimerLivre() 
 	
 	/**
+	 * permet de récupérer dans la bdd une aide à partir de son id
+	 */
+	public Aide rechercherAideParId(ActionEvent event) {
+		UIParameter cp = (UIParameter) event.getComponent()
+											.findComponent("searchID");
+		
+		// récup de la valeur du param (l'id de l'aide)
+		int aideID = (int) cp.getValue();
+		
+		// récup de l'aide à rechercher à partir de la Bdd
+		Aide aideRecherchee = aideDao.getById(aideID);
+		
+		return aideRecherchee;
+
+	} // end rechercherAideParId() 
+	
+	/**
 	 * méthode invoquée au click du lien "modifier" de la datatable
 	 * de aide.xhtml <br/>
 	 * permet de récupérer dans la bdd les infos concernant l'aide à modifier
