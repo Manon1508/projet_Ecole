@@ -19,7 +19,7 @@ import com.intiformation.projetecole.entity.Matiere;
 @SessionScoped
 public class MatiereBean implements Serializable{
 	// 1. Définition d'une matiere à ajouter
-	Matiere matiere1 = new Matiere();
+	Matiere matiere1 = new Matiere("pLibelle");
 	
 	/*Props*/
 	
