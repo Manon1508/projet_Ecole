@@ -17,6 +17,7 @@ import org.primefaces.event.RowEditEvent;
 
 import com.intiformation.projetecole.dao.AdresseDao;
 import com.intiformation.projetecole.entity.Adresse;
+import com.intiformation.projetecole.entity.Cours;
 
 /**
  * Ce MB sert à interagir avec la facelet adresse.xhtml, en faisant le lien avec l'entity et la DAO
@@ -92,6 +93,24 @@ public class AdresseBean implements Serializable{
 		listeAdresses = adresseDao.getAll();
 		return listeAdresses;
 	} // end findAllAdressesBdd()
+	
+	/**
+	 * permet de récupérer dans la bdd une adresse à partir de son id
+	 */
+	public Adresse rechercherAdresseParId(ActionEvent event) {
+		UIParameter cp = (UIParameter) event.getComponent()
+											.findComponent("searchID");
+		
+		// récup de la valeur du param (l'id de l'adresse)
+		int adresseID = (int) cp.getValue();
+		
+		// récup de l'adresse à rechercher à partir de la Bdd
+		Adresse adresseRecherchee = adresseDao.getById(adresseID);
+		
+		return adresseRecherchee;
+
+	} // end rechercherAdresseParId() 
+
 	
 	/**
 	 * méthode invoquée au click du lien "supprimer" de la data table de adresse.xhtml
