@@ -36,7 +36,7 @@ public class EtudiantCoursBean implements Serializable{
 	/*Props*/
 	
 	// liste des etudiantCourss de la Bdd pour alimenter la data table de etudiantCours.xhtml
-	private List<EtudiantCours> listeEtudiantCourss;
+	private List<EtudiantCours> listeEtudiantCours;
 
 	// prop etudiantCours
 	private EtudiantCours etudiantCours;
@@ -74,15 +74,15 @@ public class EtudiantCoursBean implements Serializable{
 	/**
 	 * @return the listeEtudiantCourss
 	 */
-	public Collection<EtudiantCours> getListeEtudiantCourss() {
-		return listeEtudiantCourss;
+	public Collection<EtudiantCours> getListeEtudiantCours() {
+		return listeEtudiantCours;
 	}
 
 	/**
 	 * @param listeEtudiantCourss the listeEtudiantCourss to set
 	 */
 	public void setListeEtudiantCourss(List<EtudiantCours> listeEtudiantCourss) {
-		this.listeEtudiantCourss = listeEtudiantCourss;
+		this.listeEtudiantCours = listeEtudiantCours;
 	}
 
 	/*méthodes*/
@@ -90,9 +90,9 @@ public class EtudiantCoursBean implements Serializable{
 	 * récupération de la liste des etudiantCourss dans la Bdd via la Dao. 
 	 * @return
 	 */
-	public List<EtudiantCours> findAllEtudiantCourssBdd(){
-		listeEtudiantCourss = etudiantCoursDao.getAll();
-		return listeEtudiantCourss;
+	public List<EtudiantCours> findAllEtudiantCoursBdd(){
+		listeEtudiantCours = etudiantCoursDao.getAll();
+		return listeEtudiantCours;
 	} // end findAllEtudiantCourssBdd()
 	
 	/**
