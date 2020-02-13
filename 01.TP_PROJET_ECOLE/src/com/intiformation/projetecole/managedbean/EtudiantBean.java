@@ -43,6 +43,8 @@ public class EtudiantBean implements Serializable{
 	
 	// dao de etudiant
 	private EtudiantDao etudiantDao;
+	
+	
 	/*ctor */
 
 	/**
