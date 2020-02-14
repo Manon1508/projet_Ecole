@@ -14,9 +14,14 @@
 		<img src="./resources/images/zoo_park.jpg" width = "100%" height = "100px" />
 		
 		<p:tabMenu activeIndex="#{param.i}">
-    <p:menuitem value="Etudiant" outcome="/etudiant.xhtml">
-        <f:param name="i" value="0" />
-    </p:menuitem>
+		
+    <p:menuButton value="Gestion du personnel">
+        <p:submenu label="Gestion du Personnel">
+            <p:menuitem value="gestion des enseignants" action="navGestionEnseignants" ajax="false"/>
+            <p:menuitem value="gestion des etudiants" action="navGestionEtudiants" ajax="false"/>
+        </p:submenu>
+    </p:menuButton>
+    
     <p:menuitem value="Enseignant" outcome="/enseignant.xhtml">
         <f:param name="i" value="1" />
     </p:menuitem>
