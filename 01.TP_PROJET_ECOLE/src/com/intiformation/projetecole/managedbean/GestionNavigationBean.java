@@ -69,6 +69,9 @@ public class GestionNavigationBean implements Serializable{
 	
 	
 	/*encapsulation*/
+	
+	/*------------ Cas de navigation de choixCode vers codeAdmin/ codeEtu /codeEns------*/
+	
 
 
 	

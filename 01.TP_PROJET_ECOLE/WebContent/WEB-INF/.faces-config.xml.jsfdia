@@ -23,4 +23,26 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#edit_aide.xhtml" PATH="/edit_aide.xhtml"
   SHAPE="288,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#codeAdmin.xhtml" PATH="/codeAdmin.xhtml"
+  SHAPE="512,305,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#choixCode.xhtml" PATH="/choixCode.xhtml"
+  SHAPE="240,321,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#choixCode.xhtml:0" NAME="item"
+   PATH="/choixCode.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="navAuthentificationAd::#codeAdmin.xhtml"
+    NAME="output" PATH="/codeAdmin.xhtml"
+    TARGET="rules:#codeAdmin.xhtml" TITLE="navAuthentificationAd" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="navAuthentificationEn::#codeEnseignant.xhtml" NAME="output1"
+    PATH="/codeEnseignant.xhtml" TARGET="rules:#codeEnseignant.xhtml"
+    TITLE="navAuthentificationEn" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="navAuthentificationEt::#codeEtudiant.xhtml"
+    NAME="output2" PATH="/codeEtudiant.xhtml"
+    TARGET="rules:#codeEtudiant.xhtml" TITLE="navAuthentificationEt" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#codeEnseignant.xhtml"
+  PATH="/codeEnseignant.xhtml" SHAPE="480,481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#codeEtudiant.xhtml"
+  PATH="/codeEtudiant.xhtml" SHAPE="480,593,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

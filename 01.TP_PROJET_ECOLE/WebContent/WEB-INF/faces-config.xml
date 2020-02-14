@@ -50,6 +50,46 @@
 	</navigation-case>		
 </navigation-rule>
 
+<!-- =====================================page accueil ============================================ -->
+ <navigation-rule>
+  <from-view-id>/choixCode.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>navAuthentificationAd</from-outcome>
+   <to-view-id>/codeAdmin.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>navAuthentificationEn</from-outcome>
+   <to-view-id>/codeEnseignant.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>navAuthentificationEt</from-outcome>
+   <to-view-id>/codeEtudiant.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <!-- =====================================page authentificationAdmin ============================================ -->
+<!--  <navigation-rule> -->
+<!--   <from-view-id>/authentificationAd.xhtml</from-view-id> -->
+<!--   <navigation-case> -->
+<!--    <from-outcome>navAccueil</from-outcome> -->
+<!--    <to-view-id>/accueil.xhtml</to-view-id> -->
+<!--   </navigation-case> -->
+<!--  </navigation-rule> -->
+ <!-- =====================================page authentificationEnseign ============================================ -->
+<!--  <navigation-rule> -->
+<!--   <from-view-id>/authentificationEn.xhtml</from-view-id> -->
+<!--   <navigation-case> -->
+<!--    <from-outcome>navAccueil</from-outcome> -->
+<!--    <to-view-id>/accueil.xhtml</to-view-id> -->
+<!--   </navigation-case> -->
+<!--  </navigation-rule> -->
+ <!-- =====================================page authentificationEtu ============================================ -->
+<!--  <navigation-rule> -->
+<!--   <from-view-id>/authentificationEt.xhtml</from-view-id> -->
+<!--   <navigation-case> -->
+<!--    <from-outcome>navAccueil</from-outcome> -->
+<!--    <to-view-id>/accueil.xhtml</to-view-id> -->
+<!--   </navigation-case> -->
+<!--  </navigation-rule> -->
 
 
 </faces-config>
