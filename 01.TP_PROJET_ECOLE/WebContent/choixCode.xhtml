@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>gestion des authentifications </h:head>
+<body>
+	<div style="background-color: lightgreen">
+	
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="header">
+			<img src="./resources/images/zoo_park.jpg" width="100%"
+				height="100px" />
+		</ui:define>
+		<!-- Définition d'un nouveau contenu pour le contenu principal -->
+		<ui:define name="content">
+			<h1 align="center" style="font-size: 40pt; color:green">BIENVENUE A L'ECOLE ANIMALIERE </h1>
+
+			<h2 align="center" style="font-size: 30pt; color: Black; border: solid 2px; background-color: lightgray"> Etes-vous : </h2>
+				
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				
+				
+			<div>
+				<table align="center">
+					<tr>
+						<td>
+							<h:form>
+							<p:growl id="growl" life="2000" />
+								<p:commandButton value="Etudiant" id="etudiant" update="growl" style="margin-right:20px;" icon="pi pi user" />
+								<h:link outcome="/codeEtudiant.xhtml" />
+							</h:form>
+						</td>
+
+						<td>
+							<h:form>
+							<p:growl id="growl" life="2000" />
+								<p:commandButton value="Enseignant" id="enseignant" update="growl" style="margin-right:20px;" icon="pi pi user" />
+								<h:link outcome="/codeEnseignant.xhtml" />
+							</h:form>
+						</td>
+
+						<td>
+							<h:form>
+							<p:growl id="growl" life="2000" />
+								<p:commandButton value="Administrateur" id="administrateur" update="growl" style="margin-right:20px;" icon="pi pi user" />
+								<h:link outcome="/codeAdmin.xhtml" />
+							</h:form>
+						</td>
+
+					</tr>
+				</table>
+				
+								<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				
+			</div>
+
+
+
+		</ui:define>
+	</ui:composition>
+	</div>
+</body>
+</html>

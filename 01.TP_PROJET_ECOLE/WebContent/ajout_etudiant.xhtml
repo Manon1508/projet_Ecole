@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>ajouter_etudiant.xhtml</title>
+	<h:outputStylesheet library="styles" name="style.css" />
+</h:head>
+<body>
+
+<h:form>
+		<p:panelGrid columns="2" border="1">
+			<f:facet name="header">
+				<h:outputText value="Formulaire pour ajouter un nouvel etudiant" />
+			</f:facet>
+
+			<h:outputLabel value="Nom : " />
+			<h:inputText value="#{etudiantBean.etudiant.nom}" />
+
+			<h:outputLabel value="Prénom : " />
+			<h:inputText value="#{etudiantBean.etudiant.prenom}" />
+
+			<h:outputLabel value="Email : " />
+			<h:inputText value="#{etudiantBean.etudiant.email}" />
+
+			<f:facet name="footer">
+				<h:commandButton action="listeEtudiants"
+					actionListener="#{etudiantBean.ajouterNouvelleEtudiant}" value="Ajouter" />
+			</f:facet>
+
+		</p:panelGrid>
+	</h:form>
+	
+	<!-- navigation vers index.xhtml -->
+	<!-- 
+		> navigation de page en page sans passer par un ManagedBean avev 
+		  les composants :
+		  h:link / h:button / h:outputlink 
+	 -->
+	<h:link value="Retour Vers La Page D'Accueil" outcome="index.xhtml"/>
+	
+
+</body>
+</html>

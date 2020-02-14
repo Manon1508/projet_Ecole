@@ -3,6 +3,7 @@ package com.intiformation.projetecole.managedbean;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -192,7 +193,29 @@ public class AdministrateurBean implements Serializable{
 		administrateurDao.ajouter(administrateur);
 	} // end ajouterNouveauLivre()
 
-	
+
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+        int filterInt = getInteger(filterText);
+ 
+        Administrateur admin = (Administrateur) value;
+        return admin.getEmail().toLowerCase().contains(filterText)
+                || admin.getNom().toLowerCase().contains(filterText)
+                || admin.getPrenom().toLowerCase().contains(filterText)
+                || admin.getIdPersonne() < filterInt;
+    }
+    
+    private int getInteger(String string) {
+        try {
+            return Integer.valueOf(string);
+        }
+        catch (NumberFormatException ex) {
+            return 0;
+        }
+    }
 
      
 
