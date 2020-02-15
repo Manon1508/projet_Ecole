@@ -11,7 +11,7 @@
 	
 	<!-- Définition du contenu par défaut du fragment de page header -->
 	<ui:composition>
-		<img src="./resources/images/zoo_park.jpg" width = "100%" height = "100px " />
+		<img src="./resources/images/zoo_park.jpg" width = "100%" height = "400px " />
 		
 		<p:tabMenu activeIndex="#{param.i}">
 		
@@ -21,10 +21,14 @@
             <p:menuitem value="gestion des etudiants" action="navGestionEtudiants" ajax="false"/>
         </p:submenu>
     </p:menuButton>
+    <p:menuitem value="Gestion des enseignants" outcome="/enseignant.xhtml">
+        <f:param name="i" value="1" />
+    </p:menuitem>    
     
     <p:menuitem value="Enseignant" outcome="/enseignant.xhtml">
         <f:param name="i" value="1" />
     </p:menuitem>
+    
     <p:menuitem value="Promotion" outcome="/promotion.xhtml">
         <f:param name="i" value="2" />
     </p:menuitem>
