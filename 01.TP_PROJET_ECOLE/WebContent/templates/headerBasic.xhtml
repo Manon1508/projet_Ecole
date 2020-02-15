@@ -11,38 +11,30 @@
 	
 	<!-- Définition du contenu par défaut du fragment de page header -->
 	<ui:composition>
-		<img src="./resources/images/zoo_park.jpg" width = "100%" height = "400px " />
+		<img src="./resources/images/zoo_park.jpg" width = "100%" height = "800px" />
 		
 		<p:tabMenu activeIndex="#{param.i}">
-
-    <p:menuitem value="Gestion des enseignants" action="navGestionEnseignants" ajax="false">
+    <p:menuitem value="Etudiant" outcome="/etudiant.xhtml">
         <f:param name="i" value="0" />
-    </p:menuitem>    
-    
-    <p:menuitem value="Gestion des etudiants" action="navGestionEtudiants" ajax="false">
+    </p:menuitem>
+    <p:menuitem value="Enseignant" outcome="/enseignant.xhtml">
         <f:param name="i" value="1" />
     </p:menuitem>
-    
-    <p:menuitem value="Gestion des promotions" action="navGestionPromotions" ajax="false">
+    <p:menuitem value="Promotion" outcome="/promotion.xhtml">
         <f:param name="i" value="2" />
     </p:menuitem>
-    
-    <p:menuitem value="Gestion des matieres" action="navGestionMatieres" ajax="false">
+    <p:menuitem value="Matiere" outcome="/matiere.xhtml">
         <f:param name="i" value="3" />
     </p:menuitem>
-    
-    <p:menuitem value="Gestion des cours" action="navGestionCours" ajax="false">
+    <p:menuitem value="Cours" outcome="/cours.xhtml">
         <f:param name="i" value="4" />
     </p:menuitem>
-    
-    <p:menuitem value="Gestion des absences" action="navGestionAbsences" ajax="false">
+    <p:menuitem value="Absence" outcome="/absence.xhtml">
         <f:param name="i" value="5" />
     </p:menuitem>
-    
-    <p:menuitem value="Gestion des aides" action="navGestionAides" ajax="false">
+    <p:menuitem value="Aide" outcome="/aide.xhtml" >
         <f:param name="i" value="6" />
     </p:menuitem>
-    
 </p:tabMenu>
 		
 	</ui:composition>

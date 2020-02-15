@@ -36,12 +36,12 @@
 	</navigation-case>
 </navigation-rule>
 
-<!-- 3. règle de navigation pour ajouter_livre.xhtml -->
+<!-- 2. règle de navigation pour ajouter_aide.xhtml -->
 <navigation-rule>
 	<!-- 3.1 page de départ -->
 	<from-view-id>/ajouter_aide.xhtml</from-view-id>
 	
-	<!-- 2.2 cas de naviagtion de ajouter_livre.xhtml vers index.xhtml -->
+	<!-- 2.2 cas de naviagtion de ajouter_aide.xhtml vers index.xhtml -->
 	<navigation-case>
 		<!-- 2.2.1 clé d'outcome (attribut action de h:commandButton de ajouter_Livre.xhtml -->
 		<from-outcome>listAide</from-outcome>
@@ -49,6 +49,8 @@
 	<to-view-id>/aide.xhtml</to-view-id>		
 	</navigation-case>		
 </navigation-rule>
+
+
 
 <!-- =====================================page accueil ============================================ -->
  <navigation-rule>
@@ -90,6 +92,68 @@
 <!--    <to-view-id>/accueil.xhtml</to-view-id> -->
 <!--   </navigation-case> -->
 <!--  </navigation-rule> -->
+
+<!-- règles de navigation pour menuAdmin.xhtml -->
+<navigation-rule>
+	<!-- 1. page de départ -->
+	<from-view-id>/menuAdmin.xhtml</from-view-id>
+	
+	<!-- 2. cas de naviagtion de menuAdmin.xhtml vers gestionEnseignants.xhtml -->
+	<navigation-case>
+		<!-- 2.1 clé d'outcome (attribut action de <p:menuitem value="Gestion des enseignants"/p> de headerAdmin -->
+		<from-outcome>navGestionEnseignants</from-outcome>
+		<!-- 2.2 page de destination -->
+	<to-view-id>/gestionEnseignants.xhtml</to-view-id>		
+	</navigation-case>	
+
+	<!-- 3. cas de naviagtion de menuAdmin.xhtml vers gestionEtudiants.xhtml -->
+	<navigation-case>
+		<!-- 3.1 clé d'outcome (attribut action de <p:menuitem value="Gestion des etudiants"/p> de headerAdmin -->
+		<from-outcome>navGestionEtudiants</from-outcome>
+		<!-- 3.2 page de destination -->
+	<to-view-id>/gestionEtudiants.xhtml</to-view-id>		
+	</navigation-case>		
+
+	<!-- 4. cas de naviagtion de menuAdmin.xhtml vers gestionPromotions.xhtml -->
+	<navigation-case>
+		<!-- 4.1 clé d'outcome (attribut action de <p:menuitem value="Gestion des promotions"/p> de headerAdmin -->
+		<from-outcome>navGestionPromotions</from-outcome>
+		<!-- 4.2 page de destination -->
+	<to-view-id>/gestionPromotions.xhtml</to-view-id>		
+	</navigation-case>		
+
+	<!-- 5. cas de naviagtion de menuAdmin.xhtml vers gestionMatieres.xhtml -->
+	<navigation-case>
+		<!-- 5.1 clé d'outcome (attribut action de <p:menuitem value="Gestion des matieres"/p> de headerAdmin -->
+		<from-outcome>navGestionMatieres</from-outcome>
+		<!-- 5.2 page de destination -->
+	<to-view-id>/gestionMatieres.xhtml</to-view-id>		
+	</navigation-case>		
+
+	<!-- 6. cas de naviagtion de menuAdmin.xhtml vers gestionCours.xhtml -->
+	<navigation-case>
+		<!-- 6.1 clé d'outcome (attribut action de <p:menuitem value="Gestion des cours"/p> de headerAdmin -->
+		<from-outcome>navGestionCours</from-outcome>
+		<!-- 6.2 page de destination -->
+	<to-view-id>/gestionCours.xhtml</to-view-id>		
+	</navigation-case>	
+
+	<!-- 7. cas de naviagtion de menuAdmin.xhtml vers gestionAbsences.xhtml -->
+	<navigation-case>
+		<!-- 7.1 clé d'outcome (attribut action de <p:menuitem value="Gestion des absences"/p> de headerAdmin -->
+		<from-outcome>navGestionAbsences</from-outcome>
+		<!-- 7.2 page de destination -->
+	<to-view-id>/gestionAbsences.xhtml</to-view-id>		
+	</navigation-case>	
+
+	<!-- 8. cas de naviagtion de menuAdmin.xhtml vers gestionAides.xhtml -->
+	<navigation-case>
+		<!-- 8.1 clé d'outcome (attribut action de <p:menuitem value="Gestion des aides"/p> de headerAdmin -->
+		<from-outcome>navGestionAides</from-outcome>
+		<!-- 8.2 page de destination -->
+	<to-view-id>/gestionAides.xhtml</to-view-id>		
+	</navigation-case>						
+</navigation-rule>
 
 
 </faces-config>
