@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>gestion de l'aide</h:head>
+<body>
+	<ui:composition template="/templates/layout.xhtml">
+		<!-- Définition d'un nouveau contenu pour le contenu principal -->
+		<ui:define name="content">
+
+			<h2>Gestion de l'aide</h2>
+			<div>
+				<form>
+					<button type="submit" name="pAfficherTs"
+						class="btn btn-outline-success">Rafraichir la page</button>
+						    <h:link value="Rafraichir la page" outcome="aide.xhtml"/>
+				</form>
+
+				<table>
+					<tr>
+						<td><a href="ajouter_aide.xhtml">
+								<button type="submit" name="pAjouter"
+									class="btn btn-outline-success">Ajouter une aide</button>
+						</a></td>
+						<h:commandButton action="aideAdd" 
+	 				  	actionListener="#{aideBean.initialiserAide}"
+	 				  	value="Ajouter une nouvelle aide" ></h:commandButton>
+	 				  	
+					</tr>
+				</table>
+				<h6></h6>
+			</div>
+			<div class="table-responsive">
+				<p:dataTable var="a" value="#{aideBean.findAllAidesBdd()}">
+					<p:column headerText="Id_Aide">
+						<h:outputText value="#{a.idAide}" />
+					</p:column>
+
+					<p:column headerText="Page">
+						<h:outputText value="#{a.page}" />
+					</p:column>
+
+					<p:column headerText="Contenu">
+						<h:outputText value="#{a.contenu}" />
+					</p:column>
+					
+       				<p:column style="width:32px">
+            			<p:rowEditor value ="#{aideBean.modifierAide()}"/>
+       				</p:column>
+       				 
+       				<p:column style="width:32px">
+            			<p:button outcome="editAide" icon="pi pi-pencil" style="margin-right:20px;" title="Icon Only">
+						</p:button>
+       				</p:column>
+       				 
+					
+<!-- 					<p:column headerText="Supprimer"> -->
+<!-- 						<h:outputText value="#{aideBean.supprimerAide()}" /> -->
+<!-- 					</p:column>					 -->
+
+				</p:dataTable>
+			</div>
+
+
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
