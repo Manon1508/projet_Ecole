@@ -178,7 +178,7 @@ public class EnseignantDao implements IGestion<Enseignant> {
 		CriteriaQuery<Enseignant> criteriaQuery = criteriaBuilder.createQuery(Enseignant.class);
 
 		/**
-		 * Reproduction de la requête JPQL : SELECT e FROM etudiant e
+		 * Reproduction de la requê te JPQL : SELECT e FROM etudiant e
 		 */
 
 		// 2.2.1 Construction du FROM de la requête : FROM enseignant e

@@ -25,7 +25,7 @@ public class Enseignant extends Personne implements Serializable {
 	
 	//=================Association==================//
 	/**
-	 * Type de la relation: une enseignant associé à une adresse
+	 * Type de la relation: un e enseignant associé à une adresse
 	 * 						one Enseignant to one Adresse => @OneToOne
 	 * 
 	 * relation de cascade avec : cascade = CascadeType.Persist

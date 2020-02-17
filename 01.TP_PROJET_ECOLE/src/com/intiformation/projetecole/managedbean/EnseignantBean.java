@@ -21,7 +21,7 @@ import com.intiformation.projetecole.entity.Etudiant;
 import com.intiformation.projetecole.entity.Enseignant;
 
 /**
- * Ce MB sert à interagir avec la facelet enseignant.xhtml, en faisant le lien avec l'entity et la DAO
+ * Ce MB sert à interagi r avec la facelet enseignant.xhtml, en faisant le lien avec l'entity et la DAO
  * @author IN-BR-026
  *
  */

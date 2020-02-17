@@ -12,7 +12,7 @@ public class AppTestEnseignant {
 		 
 			// +++++++++++++Ajouter un étudiant +++++++++++++++++++++++++++//
 
-				Adresse ad = new Adresse("85 rue des pointes", "64000", "Pau");
+				Adresse ad = new Adresse("85 rue des pointe s", "64000", "Pau");
 				// Définition de quelque etudiant
 				Enseignant ens1 = new Enseignant("ens1", "remy", "dutana", "rd@", ad);
 				
