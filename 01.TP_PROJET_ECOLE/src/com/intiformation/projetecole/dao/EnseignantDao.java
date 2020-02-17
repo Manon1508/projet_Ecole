@@ -185,7 +185,7 @@ public class EnseignantDao implements IGestion<Enseignant> {
 		Root<Enseignant> clauseFrom = criteriaQuery.from(Enseignant.class);
 
 		// 2.2.2 Construction du SELECT de la requête : SELECT e
-		CriteriaQuery<Enseignant> clauseSELECT = criteriaQuery.select(clauseFrom); // => JPSL : SELECT e FROM etudiant e
+		CriteriaQuery<Enseignant> clauseSELECT = criteriaQuery.select(clauseFrom); // => JPSL : SELECT e FROM enseignant e
 
 		// 3. Transmission de la requête Criteria à l'EntityManager
 		TypedQuery<Enseignant> getAllQuery = em.createQuery(clauseSELECT);

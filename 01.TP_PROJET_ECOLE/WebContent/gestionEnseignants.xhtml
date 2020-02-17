@@ -1,11 +1,69 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
-gestion Enseignant
-</body> 
+<h:head>Gestion des enseignants</h:head>
+<body>
+	<ui:composition template="/templates/layout.xhtml">
+		<!-- Définition d'un nouveau contenu pour le contenu principal -->
+		<ui:define name="content">
+
+			<h2>Gestion des enseignants</h2>
+<!-- 			<div> -->
+<!-- 				<form> -->
+<!-- 					<button type="submit" name="pAfficherTs" -->
+<!-- 						class="btn btn-outline-success">Rafraichir la page</button> -->
+<!-- 					<h:link value="Rafraichir la page" outcome="gestionEnseignants.xhtml" /> -->
+<!-- 				</form> -->
+<!-- 			</div> -->
+						<div class="table-responsive">
+				<p:dataTable var="ens" value="#{enseignantBean.listeEnseignants}">
+					<p:column headerText="Id_Enseignant">
+						<h:outputText value="#{ens.idPersonne}" />
+					</p:column>
+
+					<p:column headerText="Nom">
+						<h:outputText value="#{ens.nom}" />
+					</p:column>
+
+					<p:column headerText="Prenom">
+						<h:outputText value="#{ens.prenom}" />
+					</p:column>
+
+					<p:column headerText="email">
+						<h:outputText value="#{ens.email}" />
+					</p:column>
+					
+<!-- 					<p:column headerText="Adresse"> -->
+<!-- 						<h:outputText value="#{ens.adresse}" /> -->
+<!-- 					</p:column> -->
+					
+<!-- 					<p:column headerText="Matieres"> -->
+<!-- 						<h:outputText value="#{ens.listeMatieres}" /> -->
+<!-- 					</p:column> -->
+					
+       				<p:column style="width:32px">
+            			<p:rowEditor value ="#{enseignantBean.modifierEnseignant()}"/>
+       				</p:column>
+       				 
+       				<p:column style="width:32px">
+            			<p:button outcome="modifierEnseignant" icon="pi pi-pencil" style="margin-right:20px;" title="Icon Only">
+						</p:button>
+       				</p:column>
+       				 
+					
+<!-- 					<p:column headerText="Supprimer"> -->
+<!-- 						<h:outputText value="#{aideBean.supprimerAide()}" /> -->
+<!-- 					</p:column>					 -->
+
+				</p:dataTable>
+			</div>
+			
+		</ui:define>
+	</ui:composition>
+
+</body>
 </html>

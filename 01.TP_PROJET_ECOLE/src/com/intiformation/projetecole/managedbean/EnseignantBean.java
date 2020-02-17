@@ -32,7 +32,7 @@ public class EnseignantBean implements Serializable{
 
 	// 1. Définition d'une enseignant à ajouter
 	Adresse adresse1 = new Adresse("pRue", "pCp", "pVille");
-	Enseignant admin1 = new Enseignant("pMpd", "pNom", "pPrenom", "pEmail", adresse1);
+	Enseignant ens1 = new Enseignant("pMpd", "pNom", "pPrenom", "pEmail", adresse1);
 	
 	/*Props*/
 	
@@ -40,10 +40,12 @@ public class EnseignantBean implements Serializable{
 	private List<Enseignant> listeEnseignants;
 
 	// prop enseignant
-	private Enseignant enseignant;
+	Enseignant enseignant;
 	
 	// dao de enseignant
-	private EnseignantDao enseignantDao;
+	EnseignantDao enseignantDao;
+	
+	
 	/*ctor */
 
 	/**
@@ -52,50 +54,64 @@ public class EnseignantBean implements Serializable{
 	 */
 	public EnseignantBean() {
 		enseignantDao = new EnseignantDao();
-		this.enseignant=new Enseignant();
+		//this.enseignant=new Enseignant();
 	}
 	
 	/*encapsulation (de enseignant uniquement)*/
+	public Adresse getAdresse1() {
+		return adresse1;
+	}
 
-	/**
-	 * @return the enseignant
-	 */
+	public void setAdresse1(Adresse adresse1) {
+		this.adresse1 = adresse1;
+	}
+
+	public Enseignant getEns1() {
+		return ens1;
+	}
+
+	public void setEns1(Enseignant ens1) {
+		this.ens1 = ens1;
+	}
+
+	public List<Enseignant> getListeEnseignants() {
+		listeEnseignants = enseignantDao.getAll();
+		return listeEnseignants;
+	}
+
+	public void setListeEnseignants(List<Enseignant> listeEnseignants) {
+		this.listeEnseignants = listeEnseignants;
+	}
+
 	public Enseignant getEnseignant() {
 		return enseignant;
 	}
 
-	/**
-	 * @param enseignant the enseignant to set
-	 */
 	public void setEnseignant(Enseignant enseignant) {
 		this.enseignant = enseignant;
 	}
 
-	
-	/**
-	 * @return the listeEnseignants
-	 */
-	public Collection<Enseignant> getListeEnseignants() {
-		return listeEnseignants;
+	public EnseignantDao getEnseignantDao() {
+		return enseignantDao;
 	}
 
-	/**
-	 * @param listeEnseignants the listeEnseignants to set
-	 */
-	public void setListeEnseignants(List<Enseignant> listeEnseignants) {
-		this.listeEnseignants = listeEnseignants;
+	public void setEnseignantDao(EnseignantDao enseignantDao) {
+		this.enseignantDao = enseignantDao;
 	}
+
 
 	/*méthodes*/
 	/**
 	 * récupération de la liste des enseignants dans la Bdd via la Dao. 
 	 * @return
 	 */
-	public List<Enseignant> findAllEnseignantsBdd(){
-		listeEnseignants = enseignantDao.getAll();
-		return listeEnseignants;
-	} // end findAllEnseignantsBdd()
+//	public List<Enseignant> findAllEnseignantsBdd(){
+//		listeEnseignants = enseignantDao.getAll();
+//		return listeEnseignants;
+//	} // end findAllEnseignantsBdd()
 	
+
+
 	/**
 	 * méthode invoquée au click du lien "supprimer" de la data table de enseignant.xhtml
 	 * le "deleteID" se retrouve dans enseignant.xhtml
@@ -136,6 +152,7 @@ public class EnseignantBean implements Serializable{
 		} // end else
 	} // end supprimerLivre() 
 	
+
 	/**
 	 * méthode invoquée au click du lien "modifier" de la datatable
 	 * de enseignant.xhtml <br/>
