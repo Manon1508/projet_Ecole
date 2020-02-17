@@ -28,6 +28,10 @@ import com.intiformation.projetecole.entity.Adresse;
 public class AdministrateurBean implements Serializable{
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7848011578324559649L;
 	// 1. Définition d'une administrateur à ajouter
 	Adresse adresse1 = new Adresse("pRue", "pCp", "pVille");
 	Administrateur admin1 = new Administrateur("pMpd", "pNom", "pPrenom", "pEmail", adresse1);

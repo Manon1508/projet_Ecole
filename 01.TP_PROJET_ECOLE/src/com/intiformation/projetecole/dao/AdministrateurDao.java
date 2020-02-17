@@ -6,12 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import com.intiformation.projetecole.entity.Administrateur;
+import com.intiformation.projetecole.tool.JpaUtil;
+
 
 public class AdministrateurDao implements IGestion<Administrateur> {
 
@@ -194,6 +198,28 @@ public class AdministrateurDao implements IGestion<Administrateur> {
 
 		return listeAdministrateurs;
 
+	}
+	
+	// méthode pour savior si l'administrateur existe dans la bdd
+	
+	EntityManager em = JpaUtil.getInstance();
+	
+public boolean isExist(String pIdentifiant, String pMdp) {
+		
+		try {
+			
+			Query query = em.createQuery("select count(a.idPersonne) from administrateur a where a.email=?1 and a.mdp =?2"); 
+			query.setParameter(1, pIdentifiant);
+			query.setParameter(2, pMdp);
+			Long existence = (Long) query.getSingleResult();
+			
+			return (existence==1)? true:false; 
+			
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 }// end class
