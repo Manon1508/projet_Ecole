@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+	<title>login</title>
+</h:head>
+<h:body>
+	<div align="center">
+		<h:form id="loginForm">
+			<p:growl id="msg" showDetail="true" life="3000" />
+			<p:panel header="Connectez-vous avec vos identifiants"
+				style="width: 360px;">
+
+				<h:panelGrid id="loginPanel" columns="2">
+
+					<h:outputText value="Email" />
+
+					<p:inputText id="username" value="#{administrateurBean.administrateur.email}" placeholder="email@ecole.fr"></p:inputText>
+
+					<p:spacer></p:spacer>
+
+					<p:message for="username"></p:message>
+
+					<h:outputText value="Mot de Passe" />
+
+					<p:password id="password" value="#{administrateurBean.administrateur.mdp}"
+						feedback="false"></p:password>
+
+					<p:spacer></p:spacer>
+
+					<p:message for="password"></p:message>
+
+					<p:spacer></p:spacer>
+
+					<p:commandButton action="#{administrateurBean.administrateur}" value="Connection"
+						update="loginForm" ajax="true"></p:commandButton>
+
+				</h:panelGrid>
+
+			</p:panel>
+
+		</h:form>
+	</div>
+</h:body>
+
+
+
+</html>
