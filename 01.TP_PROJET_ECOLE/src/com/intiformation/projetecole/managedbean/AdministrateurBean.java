@@ -182,6 +182,7 @@ public class AdministrateurBean implements Serializable{
 		// instanciation d'un objet administrateur vide
 		Administrateur administrateurAdd = new Administrateur();
 		
+		
 		// affectation de l'objet à la propriété administrateur du ManagedBean
 		setAdministrateur(administrateurAdd);
 	} // end initialiserLivre()

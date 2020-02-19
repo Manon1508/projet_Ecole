@@ -20,6 +20,7 @@ public class GestionNavigationBean implements Serializable{
 	public GestionNavigationBean() {
 	}
 	
+	
 	/*méthodes*/
 	public String naviguerVersAccueil() {
 		return "navAide";

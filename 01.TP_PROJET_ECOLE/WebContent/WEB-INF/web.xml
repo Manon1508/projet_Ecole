@@ -5,6 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>01.TP_PROJET_ECOLE</display-name>
 	
+	
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>nova-dark</param-value>

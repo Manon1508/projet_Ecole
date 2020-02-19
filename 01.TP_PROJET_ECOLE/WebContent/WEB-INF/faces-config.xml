@@ -11,6 +11,7 @@
 	<!-- 1.1 page de départ -->
 	<from-view-id>/aide.xhtml</from-view-id>
 	
+	
 	<!-- 1.2 cas de navigation : aide.xhtml vers aide.xhtml (suppression) -->
 	<navigation-case>
 		<!-- 1.2.1 clé d'outcome (attribut action de h:commandLink -->
