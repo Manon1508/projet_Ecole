@@ -40,11 +40,32 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#codeEnseignant.xhtml"
-  PATH="/codeEnseignant.xhtml" SHAPE="480,481,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/codeEnseignant.xhtml" SHAPE="480,481,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#codeEnseignant.xhtml:0" NAME="item"
+   PATH="/codeEnseignant.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="navAccueil::#choixCode.xhtml" NAME="output"
+    PATH="/choixCode.xhtml" TARGET="rules:#choixCode.xhtml"
+    TITLE="navAccueil" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#codeEtudiant.xhtml"
-  PATH="/codeEtudiant.xhtml" SHAPE="480,593,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/codeEtudiant.xhtml" SHAPE="480,593,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#codeEtudiant.xhtml:0" NAME="item"
+   PATH="/codeEtudiant.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="navAccueil::#choixCode.xhtml" NAME="output"
+    PATH="/choixCode.xhtml" TARGET="rules:#choixCode.xhtml"
+    TITLE="navAccueil" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#codeAdmin.xhtml" PATH="/codeAdmin.xhtml"
-  SHAPE="512,305,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="512,305,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#codeAdmin.xhtml:0" NAME="item"
+   PATH="/codeAdmin.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="navAccueil::#choixCode.xhtml" NAME="output"
+    PATH="/choixCode.xhtml" TARGET="rules:#choixCode.xhtml"
+    TITLE="navAccueil" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#menuAdmin.xhtml" PATH="/menuAdmin.xhtml"
   SHAPE="32,817,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#menuAdmin.xhtml:0" NAME="item"

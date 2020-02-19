@@ -12,7 +12,9 @@ xmlns:p="http://primefaces.org/ui">
 		<!-- Définition d'un nouveau contenu pour le contenu principal -->
 		<ui:define name="content">
 		<br/>
-				<br/>
+					<h2 align="center" style="color: blue; ">Etes vous sur de vouloir vous
+				identifier en tant qu'etudiant ? </h2>
+				
 			<div align="center">
 				<h:form id="loginForm">
 					<p:growl id="msg" showDetail="true" life="3000" />
@@ -49,7 +51,9 @@ xmlns:p="http://primefaces.org/ui">
 						</h:panelGrid>
 
 					</p:panel>
-
+					<div align="left">
+						<p:commandButton value="Retour à l'accueil" action="navAccueil" />
+					</div>
 				</h:form>
 			</div>
 		</ui:define>

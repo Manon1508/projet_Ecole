@@ -12,8 +12,11 @@
 	<ui:composition template="/templates/layout.xhtml">
 		<!-- Définition d'un nouveau contenu pour le contenu principal -->
 		<ui:define name="content">
-		<br/>
-				<br/>
+			<br />
+			<h2 align="center" style="color: blue; ">Etes vous sur de vouloir vous
+				identifier en tant qu'administrateur ? </h2>
+	
+
 			<div align="center">
 				<h:form id="loginForm">
 					<p:growl id="msg" showDetail="true" life="3000" />
@@ -50,7 +53,9 @@
 						</h:panelGrid>
 
 					</p:panel>
-
+					<div align="left">
+						<p:commandButton value="Retour à l'accueil" action="navAccueil" />
+					</div>
 				</h:form>
 			</div>
 		</ui:define>
