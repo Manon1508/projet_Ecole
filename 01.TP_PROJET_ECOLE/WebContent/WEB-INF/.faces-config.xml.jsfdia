@@ -70,6 +70,12 @@
   SHAPE="32,817,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#menuAdmin.xhtml:0" NAME="item"
    PATH="/menuAdmin.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="navCodeAdmin::#codeAdmin.xhtml"
+    NAME="output" PATH="/codeAdmin.xhtml"
+    TARGET="rules:#codeAdmin.xhtml" TITLE="navCodeAdmin" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#menuAdmin.xhtml:1" NAME="item1"
+   PATH="/menuAdmin.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
     ID="navGestionEnseignants::#gestionEnseignants.xhtml" NAME="output"
     PATH="/gestionEnseignants.xhtml"

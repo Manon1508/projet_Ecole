@@ -1,12 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
-test
+<h:head>
 
-</body> 
+
+</h:head>
+<body>
+	<ui:composition template="/templates/layout.xhtml">
+		<!-- Définition d'un nouveau contenu pour le contenu principal -->
+		<ui:define name="content">
+
+			<h:form>
+				<br />
+				<h2 align="center" style="color: blue;">Bienvenue à votre
+					espace Administrateur</h2>
+
+				<div align="right">
+					<p:commandButton
+						action="#{authentificationBean.deconnecterAdmin()}" value="Logout"
+						ajax="false"></p:commandButton>
+				</div>
+
+				<div class="section nopadding nomargin"
+					style="width: 100%; height: 100%; position: absolute; left: 0; top: 300; background: url('resources/images/administrateur.jpg') center center no-repeat; background-size: cover;">
+				</div>
+
+				<div align="left">
+
+					<p:commandButton value="Retour" action="navCodeAdmin" />
+
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
 </html>

@@ -16,7 +16,6 @@ import javax.persistence.criteria.Root;
 import com.intiformation.projetecole.entity.Administrateur;
 import com.intiformation.projetecole.tool.JpaUtil;
 
-
 public class AdministrateurDao implements IGestion<Administrateur> {
 
 	@Override
@@ -188,7 +187,8 @@ public class AdministrateurDao implements IGestion<Administrateur> {
 		Root<Administrateur> clauseFrom = criteriaQuery.from(Administrateur.class);
 
 		// 2.2.2 Construction du SELECT de la requête : SELECT e
-		CriteriaQuery<Administrateur> clauseSELECT = criteriaQuery.select(clauseFrom); // => JPSL : SELECT e FROM etudiant e
+		CriteriaQuery<Administrateur> clauseSELECT = criteriaQuery.select(clauseFrom); // => JPSL : SELECT e FROM
+																						// etudiant e
 
 		// 3. Transmission de la requête Criteria à l'EntityManager
 		TypedQuery<Administrateur> getAllQuery = em.createQuery(clauseSELECT);
@@ -199,26 +199,27 @@ public class AdministrateurDao implements IGestion<Administrateur> {
 		return listeAdministrateurs;
 
 	}
-	
+
 	// méthode pour savior si l'administrateur existe dans la bdd
-	
+
 	EntityManager em = JpaUtil.getInstance();
-	
-public boolean isExist(String pIdentifiant, String pMdp) {
-		
+
+	public boolean isExist(String pEmail, String pMdp) {
+
 		try {
-			
-			Query query = em.createQuery("select count(a.idPersonne) from administrateur a where a.email=?1 and a.mdp =?2"); 
-			query.setParameter(1, pIdentifiant);
+
+			Query query = em
+					.createQuery("select count(a.idPersonne) from Administrateur a where a.email=?1 and a.mdp =?2");
+			query.setParameter(1, pEmail);
 			query.setParameter(2, pMdp);
 			Long existence = (Long) query.getSingleResult();
-			
-			return (existence==1)? true:false; 
-			
+
+			return (existence == 1) ? true : false;
+
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
 	}
 

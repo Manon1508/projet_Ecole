@@ -29,7 +29,7 @@
 							<h:outputText value="Email" />
 
 							<p:inputText id="username"
-								value="#{administrateurBean.administrateur.email}"
+								value="#{authentificationBean.email}"
 								placeholder="email@ecole.fr"></p:inputText>
 
 							<p:spacer></p:spacer>
@@ -39,7 +39,7 @@
 							<h:outputText value="Mot de Passe" />
 
 							<p:password id="password"
-								value="#{administrateurBean.administrateur.mdp}"
+								value="#{authentificationBean.motDePasse}"
 								feedback="false" placeholder="Password"></p:password>
 
 							<p:spacer></p:spacer>
@@ -48,7 +48,7 @@
 
 							<p:spacer></p:spacer>
 
-							<p:commandButton action="#{administrateurBean.administrateur}"
+							<p:commandButton action="#{authentificationBean.connecterAdmin()}"
 								value="Connection" update="loginForm" ajax="true"></p:commandButton>
 
 						</h:panelGrid>

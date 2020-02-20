@@ -51,7 +51,15 @@
 	</navigation-case>		
 </navigation-rule>
 
+<!-- =====================================menuAdmin -> codeAdmin ============================================ -->
 
+ <navigation-rule>
+  <from-view-id>/menuAdmin.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>navCodeAdmin</from-outcome>
+   <to-view-id>/codeAdmin.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
 
 <!-- =====================================page accueil ============================================ -->
  <navigation-rule>

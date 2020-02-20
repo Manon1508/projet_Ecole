@@ -6,6 +6,28 @@
 
 <h:head></h:head> 
 <body> 
-gestion matieres
+<ui:composition template="/templates/layout.xhtml">
+		<!-- Définition d'un nouveau contenu pour le contenu principal -->
+		<ui:define name="content">
+
+			<h:form>
+				<br />
+				<h2 align="center" style="color: blue;">Bienvenue à votre
+					espace Administrateur</h2>
+
+				<div align="right">
+					<p:commandButton
+						action="#{authentificationBean.deconnecterAdmin()}" value="Logout"
+						ajax="false"></p:commandButton>
+				</div>
+
+				<div align="left">
+
+					<p:commandButton value="Retour" action="navCodeAdmin" />
+
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </body> 
 </html>

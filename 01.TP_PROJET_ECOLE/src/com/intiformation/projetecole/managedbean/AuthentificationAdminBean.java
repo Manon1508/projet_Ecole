@@ -15,7 +15,7 @@ import com.intiformation.projetecole.tool.SessionUtils;
 @SessionScoped
 public class AuthentificationAdminBean {
 	
-	private String identifiant;
+	private String email;
 	private String motDePasse;
 	
 	private AdministrateurDao administrateurDao;
@@ -26,13 +26,13 @@ public class AuthentificationAdminBean {
 	
 	
 	public String connecterAdmin() {
-		if(administrateurDao.isExist(identifiant, motDePasse)) {
+		if(administrateurDao.isExist(email, motDePasse)) {
 			// --> user exist
 			// creation de la session
 			
 			HttpSession session = SessionUtils.getUserSession();
 			//sauvegarde du login dans la session
-			session.setAttribute("user_login", identifiant);
+			session.setAttribute("user_login", email);
 			
 			// renvoie de la page de redirection
 			return "menuAdmin.xhtml";
@@ -58,13 +58,17 @@ public class AuthentificationAdminBean {
 		return "codeAdmin.xhtml";
 	}// end metrhod
 
-	public String getIdentifiant() {
-		return identifiant;
+
+
+	public String getEmail() {
+		return email;
 	}
 
-	public void setIdentifiant(String identifiant) {
-		this.identifiant = identifiant;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
 
 	public String getMotDePasse() {
 		return motDePasse;
