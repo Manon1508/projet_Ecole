@@ -61,6 +61,25 @@
   </navigation-case>
  </navigation-rule>
 
+<!-- =====================================gestionEns -> gestionEns (actualisation) ============================================ -->
+
+ <navigation-rule>
+  <from-view-id>/gestionEnseignants.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>navGestionEns</from-outcome>
+   <to-view-id>/ajouter_enseignant.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+
+<!-- =====================================gestionEns -> gestionEns (actualisation) ============================================ -->
+
+ <navigation-rule>
+  <from-view-id>/gestionEnseignants.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>navGestionEns</from-outcome>
+   <to-view-id>/gestionEnseignants.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
 <!-- =====================================page accueil ============================================ -->
  <navigation-rule>
   <from-view-id>/choixCode.xhtml</from-view-id>

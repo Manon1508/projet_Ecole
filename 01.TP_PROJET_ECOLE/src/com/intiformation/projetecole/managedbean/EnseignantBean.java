@@ -3,6 +3,7 @@ package com.intiformation.projetecole.managedbean;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -16,6 +17,7 @@ import org.primefaces.event.RowEditEvent;
 
 import com.intiformation.projetecole.dao.EnseignantDao;
 import com.intiformation.projetecole.entity.Enseignant;
+import com.intiformation.projetecole.entity.Administrateur;
 import com.intiformation.projetecole.entity.Adresse;
 import com.intiformation.projetecole.entity.Etudiant;
 import com.intiformation.projetecole.entity.Enseignant;
@@ -37,13 +39,13 @@ public class EnseignantBean implements Serializable{
 	/*Props*/
 	
 	// liste des enseignants de la Bdd pour alimenter la data table de enseignant.xhtml
-	private List<Enseignant> listeEnseignants;
+	private Collection<Enseignant> listeenseignant;
 
 	// prop enseignant
-	Enseignant enseignant;
+	private Enseignant enseignant;
 	
 	// dao de enseignant
-	EnseignantDao enseignantDao;
+	private EnseignantDao enseignantDao;
 	
 	
 	/*ctor */
@@ -54,50 +56,63 @@ public class EnseignantBean implements Serializable{
 	 */
 	public EnseignantBean() {
 		enseignantDao = new EnseignantDao();
-		//this.enseignant=new Enseignant();
+		enseignant = new Enseignant();
 	}
 	
-	/*encapsulation (de enseignant uniquement)*/
+
+	/*encapsulation */
+
+
+
 	public Adresse getAdresse1() {
 		return adresse1;
 	}
+
 
 	public void setAdresse1(Adresse adresse1) {
 		this.adresse1 = adresse1;
 	}
 
+
 	public Enseignant getEns1() {
 		return ens1;
 	}
+
 
 	public void setEns1(Enseignant ens1) {
 		this.ens1 = ens1;
 	}
 
-	public List<Enseignant> getListeEnseignants() {
-		listeEnseignants = enseignantDao.getAll();
-		return listeEnseignants;
+
+	public Collection<Enseignant> getListeenseignant() {
+		return listeenseignant;
 	}
 
-	public void setListeEnseignants(List<Enseignant> listeEnseignants) {
-		this.listeEnseignants = listeEnseignants;
+
+	public void setListeenseignant(Collection<Enseignant> listeenseignant) {
+		this.listeenseignant = listeenseignant;
 	}
+
 
 	public Enseignant getEnseignant() {
 		return enseignant;
 	}
 
+
 	public void setEnseignant(Enseignant enseignant) {
 		this.enseignant = enseignant;
 	}
+
 
 	public EnseignantDao getEnseignantDao() {
 		return enseignantDao;
 	}
 
+
 	public void setEnseignantDao(EnseignantDao enseignantDao) {
 		this.enseignantDao = enseignantDao;
 	}
+
 
 
 	/*méthodes*/
@@ -105,11 +120,11 @@ public class EnseignantBean implements Serializable{
 	 * récupération de la liste des enseignants dans la Bdd via la Dao. 
 	 * @return
 	 */
-//	public List<Enseignant> findAllEnseignantsBdd(){
-//		listeEnseignants = enseignantDao.getAll();
-//		return listeEnseignants;
-//	} // end findAllEnseignantsBdd()
-	
+
+	public Collection<Enseignant> findAllenseignantBdd(){
+		listeenseignant = enseignantDao.getAll();
+		return listeenseignant;
+	}
 
 
 	/**
@@ -212,7 +227,28 @@ public class EnseignantBean implements Serializable{
 		enseignantDao.ajouter(enseignant);
 	} // end ajouterNouveauLivre()
 
-	
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+        int filterInt = getInteger(filterText);
+ 
+        Enseignant ens = (Enseignant) value;
+        return ens.getEmail().toLowerCase().contains(filterText)
+                || ens.getNom().toLowerCase().contains(filterText)
+                || ens.getPrenom().toLowerCase().contains(filterText)
+                || ens.getIdPersonne() < filterInt;
+    }
+    
+    private int getInteger(String string) {
+        try {
+            return Integer.valueOf(string);
+        }
+        catch (NumberFormatException ex) {
+            return 0;
+        }
+    }
 
      
 

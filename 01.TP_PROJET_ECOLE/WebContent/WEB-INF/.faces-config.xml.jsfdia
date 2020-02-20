@@ -104,7 +104,20 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#gestionEnseignants.xhtml"
-  PATH="/gestionEnseignants.xhtml" SHAPE="240,833,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/gestionEnseignants.xhtml" SHAPE="240,833,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#gestionEnseignants.xhtml:0" NAME="item"
+   PATH="/gestionEnseignants.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="navGestionEns::#ajouter_enseignant.xhtml"
+    NAME="output" PATH="/ajouter_enseignant.xhtml"
+    TARGET="rules:#ajouter_enseignant.xhtml" TITLE="navGestionEns" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#gestionEnseignants.xhtml:1" NAME="item1"
+   PATH="/gestionEnseignants.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="navGestionEns::#gestionEnseignants.xhtml"
+    NAME="output" PATH="/gestionEnseignants.xhtml"
+    TARGET="rules:#gestionEnseignants.xhtml" TITLE="navGestionEns" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#gestionPromotions.xhtml"
   PATH="/gestionPromotions.xhtml" SHAPE="304,833,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#gestionCours.xhtml"
@@ -117,4 +130,6 @@
   PATH="/gestionAides.xhtml" SHAPE="304,833,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#gestionAbsences.xhtml"
   PATH="/gestionAbsences.xhtml" SHAPE="304,1249,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ajouter_enseignant.xhtml"
+  PATH="/ajouter_enseignant.xhtml" SHAPE="544,929,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

@@ -3,67 +3,150 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions">
 
 <h:head>Gestion des enseignants</h:head>
-<body>
+<h:body>
 	<ui:composition template="/templates/layout.xhtml">
 		<!-- Définition d'un no uveau contenu pour le contenu principal -->
 		<ui:define name="content">
 
-			<h2>Gestion des enseignants</h2>
-<!-- 			<div> -->
-<!-- 				<form> -->
-<!-- 					<button type="submit" name="pAfficherTs" -->
-<!-- 						class="btn btn-outline-success">Rafraichir la page</button> -->
-<!-- 					<h:link value="Rafraichir la page" outcome="gestionEnseignants.xhtml" /> -->
-<!-- 				</form> -->
-<!-- 			</div> -->
-						<div class="table-responsive">
-				<p:dataTable var="ens" value="#{enseignantBean.listeEnseignants}">
-					<p:column headerText="Id_Enseignant">
+			<h2 align="center" style="color: blue;">Gestion des enseignants</h2>
+			<div>
+				<h:form>
+					<p:growl id="growl" life="2000" />
+					<p:commandButton value="Actualisation" action="navGestionEns"
+						update="growl" style="margin-right:20px;" icon="pi pi-undo" />
+					<h:link outcome="/gestionEnseignants.xhtml" />
+				</h:form>
+			</div>
+			<h:form>
+				<br />
+				<br />
+				<p:dataTable value="#{enseignantBean.findAllenseignantBdd()}"
+					var="ens" border="2" width="60%" scrollable="true"
+					scrollHeight="150" widgetVar="Table1"
+					emptyMessage="Pas d'enseignant trouvé"
+					filteredValue="#{enseignantBean.listeenseignant}"
+					globalFilterFunction="#{enseignantBean.globalFilterFunction()}">
+
+					<f:facet name="header">
+						<p:outputPanel>
+							<h:outputText value="Search:" />
+							<p:inputText id="globalFilter" onkeyup="PF('Table1').filter()"
+								style="width:150px" placeholder="Rechercher" />
+
+						</p:outputPanel>
+					</f:facet>
+					<!-- colonne + données -->
+					<p:column filterBy="#{ens.idPersonne}">
+						<!-- en-tete de la colonne -->
+						<f:facet name="header">
+							<h:outputText value="Identifiant de l'enseignant" />
+						</f:facet>
+						<!-- données de la colonne -->
 						<h:outputText value="#{ens.idPersonne}" />
 					</p:column>
 
-					<p:column headerText="Nom">
+					<p:column filterBy="#{ens.nom}">
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
 						<h:outputText value="#{ens.nom}" />
 					</p:column>
 
-					<p:column headerText="Prenom">
+					<p:column filterBy="#{ens.prenom}">
+						<f:facet name="header">
+							<h:outputText value="Prenom" />
+						</f:facet>
 						<h:outputText value="#{ens.prenom}" />
 					</p:column>
 
-					<p:column headerText="email">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Adresse" />
+						</f:facet>
+						<h:outputText value="#{ens.adresse.rue} #{ens.adresse.cp} #{ens.adresse.ville}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
 						<h:outputText value="#{ens.email}" />
 					</p:column>
-					
-<!-- 					<p:column headerText="Adresse"> -->
-<!-- 						<h:outputText value="#{ens.adresse}" /> -->
-<!-- 					</p:column> -->
-					
-<!-- 					<p:column headerText="Matieres"> -->
-<!-- 						<h:outputText value="#{ens.listeMatieres}" /> -->
-<!-- 					</p:column> -->
-					
-       				<p:column style="width:32px">
-            			<p:rowEditor value ="#{enseignantBean.modifierEnseignant()}"/>
-       				</p:column>
-       				 
-       				<p:column style="width:32px">
-            			<p:button outcome="modifierEnseignant" icon="pi pi-pencil" style="margin-right:20px;" title="Icon Only">
-						</p:button>
-       				</p:column>
-       				 
-					
-<!-- 					<p:column headerText="Supprimer"> -->
-<!-- 						<h:outputText value="#{aideBean.supprimerAide()}" /> -->
-<!-- 					</p:column>					 -->
 
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Mot de passe" />
+						</f:facet>
+						<h:outputText value="#{ens.mdp}" />
+					</p:column>
+
+					<p:column headerText="Supprimer">
+						<!-- lien hypertext -->
+						<!-- 
+		            > action = clé d'outcome pour la navigation 
+		            > actionListener = methode à invoquer dans le managedBean
+		        -->
+
+						<h:commandLink id="delete" action="listEns"
+							actionListener="#{enseignantBean.supprimerEnseignant}">
+							<!-- passage d'un param (id_livre)-->
+							<f:param id="deleteID" name="id" value="#{ens.idPersonne}" />
+							<!--  label du lien -->
+							<h:outputText value="supprimer" />
+
+						</h:commandLink>
+
+					</p:column>
+
+					<!-- collone pour modifer  -->
+					<p:column headerText="Modifier">
+						<!-- lien hypertext -->
+						<!-- 
+		            > action = clé d'outcome pour la navigation 
+		            > actionListener = methode à invoquer dans le managedBean
+		        -->
+
+						<h:commandLink id="update" action="editEns"
+							actionListener="#{enseignantBean.modifierEnseignant()}">
+							<!-- passage d'un param (id_livre)-->
+							<f:param id="editID" name="id" value="#{ens.idPersonne}" />
+							<!--  label du lien -->
+							<h:outputText value="modifier" />
+
+						</h:commandLink>
+					</p:column>
+
+					<f:facet name="footer">
+        Au total il y a #{fn:length(enseignantBean.findAllenseignantBdd())} enseignants.
+    				</f:facet>
 				</p:dataTable>
-			</div>
-			
+
+				<br />
+				<br />
+				<!-- bouton pour ajouter -->
+				<!-- 
+	    > action = clé d'outcom pour naviguer vers ajouter_livre.xhtml
+	 -->
+				<div align="right">
+					<h:form>
+						<p:growl id="growl" life="2000" />
+						<p:commandButton action="addEnseig" update="growl"
+							style="margin-right:20px;" value="Ajouter Un Enseignant"
+							actionListener="#{enseignantBean.ajouterNouvelleEnseignant}" />
+						<h:link outcome="/ajouter_enseignant.xhtml" />
+					</h:form>
+				</div>
+									<div align="left">
+						<p:commandButton value="Retour" action="navMenuAdmin" />
+					</div>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 
-</body>
+
+</h:body>
 </html>
