@@ -81,6 +81,36 @@
   </navigation-case>
  </navigation-rule>
  
+  <!-- =====================================gestionEns -> modif ============================================ -->
+
+ <navigation-rule>
+  <from-view-id>/gestionEnseignants.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>editEns</from-outcome>
+   <to-view-id>/edit_enseignant.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+   <!-- =====================================gestionEns -> retour ============================================ -->
+
+ <navigation-rule>
+  <from-view-id>/edit_enseignant.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>navAdmin</from-outcome>
+   <to-view-id>/gestionEnseignants.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+    <!-- =====================================gestionEns -> modif ============================================ -->
+
+ <navigation-rule>
+  <from-view-id>/edit_enseignant.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>navAdmin2</from-outcome>
+   <to-view-id>/gestionEnseignants.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+
  <!-- ===================================== ajout -> menuAdmin ============================================ -->
 
  <navigation-rule>
