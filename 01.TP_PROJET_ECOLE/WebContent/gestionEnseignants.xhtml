@@ -67,7 +67,8 @@
 						<f:facet name="header">
 							<h:outputText value="Adresse" />
 						</f:facet>
-						<h:outputText value="#{ens.adresse.rue} #{ens.adresse.cp} #{ens.adresse.ville}" />
+						<h:outputText
+							value="#{ens.adresse.rue} #{ens.adresse.cp} #{ens.adresse.ville}" />
 					</p:column>
 
 					<p:column>
@@ -132,17 +133,18 @@
 	    > action = clé d'outcom pour naviguer vers ajouter_livre.xhtml
 	 -->
 				<div align="right">
-					<h:form>
+					
 						<p:growl id="growl" life="2000" />
-						<p:commandButton action="addEnseig" update="growl"
-							style="margin-right:20px;" value="Ajouter Un Enseignant"
-							actionListener="#{enseignantBean.ajouterNouvelleEnseignant}" />
-						<h:link outcome="/ajouter_enseignant.xhtml" />
-					</h:form>
+						<h:commandButton action="addEns" update="growl"
+							style="margin-right:20px;" value="Ajouter"
+							actionListener="#{enseignantBean.initialiserEnseignant}" />
+						
+					
 				</div>
-									<div align="left">
-						<p:commandButton value="Retour" action="navMenuAdmin" />
-					</div>
+				
+				<div align="left">
+					<p:commandButton value="Retour" action="navMenuAdmin" />
+				</div>
 			</h:form>
 		</ui:define>
 	</ui:composition>

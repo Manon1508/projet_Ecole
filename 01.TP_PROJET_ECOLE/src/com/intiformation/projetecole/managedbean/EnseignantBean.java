@@ -142,12 +142,12 @@ public class EnseignantBean implements Serializable{
 		
 		// suppression de l'enseignant dans la Bdd via la dao
 		// --> envoi d'un message vers la vue
-		FacesContext context = null;
+		FacesContext context = FacesContext.getCurrentInstance();
 		if( enseignantDao.supprimer(enseignantID)) {
 			// -> suppression OK
 			// -> envoi d'un message vers la vue avec la classe FacesMessage
 			// récup du contexte
-			context = FacesContext.getCurrentInstance();
+		
 			
 			// définition du message
 			FacesMessage messageDelete = new FacesMessage("L'enseignant a été supprimée avec succès");

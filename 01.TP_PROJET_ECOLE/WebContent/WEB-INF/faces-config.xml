@@ -61,16 +61,45 @@
   </navigation-case>
  </navigation-rule>
 
-<!-- =====================================gestionEns -> gestionEns (actualisation) ============================================ -->
+<!-- =====================================gestionEns -> ajout ============================================ -->
 
  <navigation-rule>
   <from-view-id>/gestionEnseignants.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>navGestionEns</from-outcome>
+   <from-outcome>addEns</from-outcome>
    <to-view-id>/ajouter_enseignant.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ 
+ <!-- =====================================gestionEns -> supp ============================================ -->
 
+ <navigation-rule>
+  <from-view-id>/gestionEnseignants.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>listEns</from-outcome>
+   <to-view-id>/gestionEnseignants.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <!-- ===================================== ajout -> menuAdmin ============================================ -->
+
+ <navigation-rule>
+  <from-view-id>/ajouter_enseignant.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>navMenuAdmin</from-outcome>
+   <to-view-id>/gestionEnseignants.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+
+<!-- =====================================gestionEns -> menuEnseignant ============================================ -->
+
+ <navigation-rule>
+  <from-view-id>/gestionEnseignants.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>navMenuAdmin</from-outcome>
+   <to-view-id>/menuAdmin.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
 <!-- =====================================gestionEns -> gestionEns (actualisation) ============================================ -->
 
  <navigation-rule>
