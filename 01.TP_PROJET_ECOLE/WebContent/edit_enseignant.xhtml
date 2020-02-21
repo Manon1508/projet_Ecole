@@ -23,38 +23,41 @@
 		<!-- Définition d'un no uveau contenu pour le contenu principal -->
 		<ui:define name="content">
 
-			<h2 align="center" style="color: blue;">Modification enseignant
-			</h2>
+			<br />
+			<br />
 			<h:form>
 
 				<!-- recup de l'id du livre dans un champs caché -->
 				<h:inputHidden value="#{enseignantBean.enseignant.idPersonne}" />
 
+				<p:panel header="Modifier">
+					<div align="center">
+						<h:panelGrid columns="4" cellpadding="5">
+							<f:facet name="header">
+								<h:outputText value="Modification des données de l'enseignant" />
+							</f:facet>
 
-				<h:panelGrid columns="2" border="1">
-					<f:facet name="header">
-						<h:outputText value="Modification des données de l'enseignant" />
-					</f:facet>
+							<h:outputLabel value="Nom : " for="text" />
+							<p:inputText id="text" value="#{enseignantBean.enseignant.nom}" />
 
-					<h:outputLabel value="Nom : " />
-					<h:inputText value="#{enseignantBean.enseignant.nom}" />
+							<h:outputLabel value="Prénom : " for="text" />
+							<p:inputText value="#{enseignantBean.enseignant.prenom}" />
 
-					<h:outputLabel value="Prénom : " />
-					<h:inputText value="#{enseignantBean.enseignant.prenom}" />
+							<h:outputLabel value="E-mail : " for="text" />
+							<p:inputText value="#{enseignantBean.enseignant.email}" />
 
-					<h:outputLabel value="E-mail : " />
-					<h:inputText value="#{enseignantBean.enseignant.email}" />
-
-					<h:outputLabel value="Mot de Passe : " />
-					<h:inputText value="#{enseignantBean.enseignant.mdp}" />
-
-					<f:facet name="footer">
-						<h:commandButton action="navAdmin2" value="Enregistrer"
-							actionListener="#{enseignantBean.modifierEnseignant}" />
-					</f:facet>
-				</h:panelGrid>
-				
-
+							<h:outputLabel value="Mot de Passe : " for="text" />
+							<p:inputText value="#{enseignantBean.enseignant.mdp}" />
+							<div align="center">
+								<f:facet name="footer">
+									<p:commandButton action="navAdmin2" value="Enregistrer"
+										ajax="false" icon="pi pi-check"
+										actionListener="#{enseignantBean.modifierEnseignant}" />
+								</f:facet>
+							</div>
+						</h:panelGrid>
+					</div>
+				</p:panel>
 			</h:form>
 			<br />
 			<br />
